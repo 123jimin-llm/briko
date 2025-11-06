@@ -2,6 +2,14 @@
 
 A collection of utilities for managing LLM context and executor.
 
+## Context
+
+### `LinearHistory`
+
+### `TreeHistory`
+
+## Executor
+
 ## Development
 
 This project uses [pnpm](https://pnpm.io/) for package management.
