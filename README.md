@@ -2,11 +2,23 @@
 
 A collection of utilities for managing LLM context and executor.
 
+Each component of this library is designed to be modular; it's possible to use only the parts you need.
+
 ## Context
 
-### `LinearHistory`
+This module provides structures that can be used to build parts of the context window.
 
-### `TreeHistory`
+### History
+
+Most often, AI agents maintain a *history* of messages; an append-only list of messages. Fitting the history in the context window is a common problem.
+
+#### `LinearHistory`
+
+#### `TreeHistory`
+
+## LLM API
+
+This module provides an abstraction layer over different LLM APIs.
 
 ## Executor
 
