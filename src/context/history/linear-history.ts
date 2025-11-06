@@ -3,7 +3,10 @@ import type { History } from "./type.js";
 import { ContextWindowConstraint } from "../type.js";
 
 export class LinearHistory implements History {
+    /** The list of messages in the history. */
     private history: MessageArray;
+
+    /** Length of the history at the time of the last commit. */
     private committed_ind: number = 0;
 
     constructor(history?: MessageArray) {
