@@ -56,15 +56,6 @@ export interface SamplingParams {
 
 export type LLMParams = EndpointParams & ModelParams & SamplingParams;
 
-export type ChatCompletionDelta = {
-    type: 'message',
-    message: Message,
-} | {
-    type: 'delta',
-    channel?: string,
-    content: MessageContent,
-}
-
 export interface LLMClient {
     createChatCompletion(llm: LLMParams, messages: MessageArray, signal?: AbortSignal): AsyncGenerator<Partial<Message>>;
 }
