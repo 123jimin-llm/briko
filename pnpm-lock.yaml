@@ -13,7 +13,10 @@ importers:
         version: 0.2.0
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/7f13e5599b80c0d330f1b501783249ca30522013(@google/genai@1.29.0)(openai@5.23.2(ws@8.18.3))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/7f13e5599b80c0d330f1b501783249ca30522013(@google/genai@1.29.0)(openai@6.8.1(ws@8.18.3))
+      openai:
+        specifier: ^6.8.1
+        version: 6.8.1(ws@8.18.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.1
@@ -684,12 +687,12 @@ packages:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  openai@5.23.2:
-    resolution: {integrity: sha512-MQBzmTulj+MM5O8SKEk/gL8a7s5mktS9zUtAkU257WjvobGc9nKcBuVwjyEEcb9SI8a8Y2G/mzn3vm9n1Jlleg==}
+  openai@6.8.1:
+    resolution: {integrity: sha512-ACifslrVgf+maMz9vqwMP4+v9qvx5Yzssydizks8n+YUJ6YwUoxj51sKRQ8HYMfR6wgKLSIlaI108ZwCk+8yig==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
-      zod: ^3.23.8
+      zod: ^3.25 || ^4.0
     peerDependenciesMeta:
       ws:
         optional: true
@@ -1535,12 +1538,12 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/7f13e5599b80c0d330f1b501783249ca30522013(@google/genai@1.29.0)(openai@5.23.2(ws@8.18.3)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/7f13e5599b80c0d330f1b501783249ca30522013(@google/genai@1.29.0)(openai@6.8.1(ws@8.18.3)):
     dependencies:
       '@google/genai': 1.29.0
       arktype: 2.1.25
       json5: 2.2.3
-      openai: 5.23.2(ws@8.18.3)
+      openai: 6.8.1(ws@8.18.3)
       smol-toml: 1.4.2
 
   locate-path@6.0.0:
@@ -1615,7 +1618,7 @@ snapshots:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
 
-  openai@5.23.2(ws@8.18.3):
+  openai@6.8.1(ws@8.18.3):
     optionalDependencies:
       ws: 8.18.3
 

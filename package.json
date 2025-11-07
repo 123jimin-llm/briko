@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@jiminp/tooltool": "^0.2.0",
-    "llm-msg-io": "github:123jimin-llm/llm-msg-io"
+    "llm-msg-io": "github:123jimin-llm/llm-msg-io",
+    "openai": "^6.8.1"
   }
 }
