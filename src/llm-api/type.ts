@@ -1,4 +1,4 @@
-import { Message, MessageArray, MessageContent } from "llm-msg-io";
+import { Message, MessageArray } from "llm-msg-io";
 
 export interface ModelInfo {
     id: string;
