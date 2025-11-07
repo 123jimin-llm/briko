@@ -44,11 +44,18 @@ export interface SamplingReasoningParams {
 
 /** Parameters for sampling. */
 export interface SamplingParams {
+    /** Sampling temperature. */
     temperature?: number;
+    /** Cumulative probability of top tokens to consider. */
     top_p?: number;
+    /** \# of top tokens to consider. */
     top_k?: number;
+    /** Minimum probability for a token to be considered. */
     min_p?: number;
-    seed?: number;
+
+    seed?: string|number;
+
+    /** Max \# of tokens to include in output. */
     max_tokens?: number;
 
     reasoning?: Partial<SamplingReasoningParams>;
