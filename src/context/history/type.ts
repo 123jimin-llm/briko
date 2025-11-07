@@ -11,6 +11,6 @@ export interface History extends Context {
     /** Reverts to previously committed state. */
     revert(): Promise<void>;
 
-    /** Exports the current state. */
+    /** Exports the current history. */
     export(): Promise<MessageArray>;
 };
