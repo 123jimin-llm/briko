@@ -10,7 +10,7 @@ export class LinearHistory implements History {
     private committed_ind: number = 0;
 
     constructor(history?: MessageArray) {
-        this.history = history ?? [];
+        this.history = history?.length ? [...history] : [];
     }
 
     async toMessageArray(constraint?: ContextWindowConstraint): Promise<MessageArray> {

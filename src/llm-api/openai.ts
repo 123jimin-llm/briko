@@ -18,6 +18,7 @@ export function createOpenAIClient(params: EndpointParams): OpenAI {
 
 export const createOpenAIChatCompletion: CreateChatCompletionFunction = async function*(llm, messages, signal) {
     const client = createOpenAIClient(llm);
+    const api_messages = createEncoder(OpenAIChatCodec)(messages);
 
     const request: ChatCompletionCreateParamsStreaming = {
         stream: true,
@@ -33,13 +34,19 @@ export const createOpenAIChatCompletion: CreateChatCompletionFunction = async fu
         },
 
         max_completion_tokens: llm.max_tokens,
-        messages: createEncoder(OpenAIChatCodec)(messages),
+        messages: api_messages,
     };
 
     const decode = createDecoder(OpenAIChatCodec);
 
     for await(const chunk of await client.chat.completions.create(request, { signal })) {
         const delta = chunk.choices[0].delta as Partial<ChatCompletionMessage>;
-        yield* decode([delta as ChatCompletionMessage]).messages;
+
+        yield* decode([{
+            role: 'assistant',
+            content: "",
+            refusal: null,
+            ...delta,
+        } satisfies ChatCompletionMessage]).messages;
     }
 };
