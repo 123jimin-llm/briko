@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { ChatCompletionCreateParamsStreaming, ChatCompletionMessage } from "openai/resources/index.js";
 
-import { createDecoder, createEncoder, OpenAIChatCodec } from "llm-msg-io";
+import { createDecoder, createEncoder, Message, OpenAIChatCodec } from "llm-msg-io";
 import { EndpointParams, CreateChatCompletionFunction } from "./type.js";
 
 export function createOpenAIClient(params: EndpointParams): OpenAI {
@@ -42,11 +42,16 @@ export const createOpenAIChatCompletion: CreateChatCompletionFunction = async fu
     for await(const chunk of await client.chat.completions.create(request, { signal })) {
         const delta = chunk.choices[0].delta as Partial<ChatCompletionMessage>;
 
-        yield* decode([{
+        const decoded: Partial<Message> = decode([{
             role: 'assistant',
             content: "",
             refusal: null,
             ...delta,
-        } satisfies ChatCompletionMessage]).messages;
+        } satisfies ChatCompletionMessage]).messages[0];
+
+        if(delta.role    == null) delete decoded.role;
+        if(delta.content == null) delete decoded.content;
+
+        yield decoded;
     }
 };
