@@ -4,12 +4,14 @@
         "dotenv",
         "eslintcache",
         "jimin",
+        "jiminp",
         "jscoverage",
         "Microbundle",
         "Nuxt",
         "pids",
         "quantizations",
         "stylelintcache",
+        "tooltool",
         "vuepress",
         "wscript"
     ]

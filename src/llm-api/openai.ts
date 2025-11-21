@@ -30,7 +30,6 @@ export const createOpenAIChatCompletion: CreateChatCompletionFunction = async fu
         seed: llm.seed == null ? (void 0) : Number(llm.seed),
 
         ... {
-            
         },
 
         max_completion_tokens: llm.max_tokens,
