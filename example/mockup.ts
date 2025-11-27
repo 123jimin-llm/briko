@@ -3,6 +3,8 @@ const req = createRequest(...);
 
 const llm = createLLMClient(...);
 const stream = await llm.chat(req, true);
-stream.on("content.delta", )
+stream.on("content.delta", (delta) => {
+    ...
+});
 
 const res = await stream.done();
