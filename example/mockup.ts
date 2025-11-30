@@ -1,3 +1,8 @@
+const history = new HierarchicalHistory(...);
+const req = reqTemplate.render([
+    history.getMessages(),
+], {}).use();
+
 const req = createRequest(...);
 // TODO: Applying history and tool calls to request.
 
