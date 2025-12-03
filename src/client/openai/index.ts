@@ -4,7 +4,7 @@ import { Stream } from "openai/core/streaming";
 
 import { LLMClient, LLMStream } from "../type.js";
 import { invokeLLMStreamEventHandlers, LLMStreamEvent, LLMStreamEventHandlersRecord } from "../event.js";
-import { createEncoder, Message, OpenAIResponsesInputCodec } from "llm-msg-io";
+import { createEncoder, Message, OpenAIResponseInputCodec } from "llm-msg-io";
 import { LLMRequest } from "../../request/type.js";
 
 export type OpenAIExtraStepParams = Partial<ResponseCreateParamsBase>;
@@ -29,9 +29,8 @@ export function createOpenAIClient(): LLMClient<OpenAIExtraStepParams> {
 }
 
 function createOpenAIResponseCreateParams(request: LLMRequest<OpenAIExtraStepParams>): ResponseCreateParamsBase {
-    // TODO
-    const api_messages = createEncoder(OpenAIResponsesInputCodec)(request.messages);
     return {
+        ...createEncoder(OpenAIResponseInputCodec)(request.messages),
         ...request.extra_params,
     };
 }
