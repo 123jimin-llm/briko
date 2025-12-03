@@ -1,8 +1,47 @@
 import { MessageArray } from "llm-msg-io";
 import { TransformFunction, NestedArray } from "@jiminp/tooltool";
 
-export interface LLMRequest<ExtraParams extends object = {}> {
-    messages: MessageArray;
-    extra_params?: ExtraParams;
-    use(...transforms: NestedArray<TransformFunction<LLMRequest<ExtraParams>>>): LLMRequest<ExtraParams>;
+/** Parameters for specifying a specific LLM model. */
+export interface ModelParams {
+    /** ID for a model. */
+    model: string;
 }
+
+/** Parameters for reasoning efforts. */
+export interface SamplingReasoningParams {
+    effort: 'high'|'medium'|'low';
+    max_tokens: number;
+    exclude: boolean;
+}
+
+export interface SamplingParams {
+    /** Sampling temperature. */
+    temperature?: number;
+    /** Cumulative probability of top tokens to consider. */
+    top_p?: number;
+    /** \# of top tokens to consider. */
+    top_k?: number;
+    /** Minimal probability for a token, relative to the most likely token. */
+    min_p?: number;
+    /** Top P, relative to the most likely token. */
+    top_a?: number;
+
+    seed?: string|number;
+
+    /** Max \# of tokens to include in output. */
+    max_tokens?: number;
+
+    reasoning?: Partial<SamplingReasoningParams>;
+}
+
+export type LLMRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
+    /** Messages to send. */
+    messages: MessageArray;
+
+    /** Provider and API-specific parameters. */
+    extra_params?: ExtraParams;
+};
+
+export type LLMRequest<ExtraParams extends object = object> = LLMRequestParams<ExtraParams> & {
+    use(...transforms: NestedArray<TransformFunction<LLMRequest<ExtraParams>>>): LLMRequest<ExtraParams>;
+};

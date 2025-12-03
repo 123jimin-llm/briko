@@ -7,8 +7,7 @@ export interface LLMStream {
     done(): Promise<Message>;
 }
 
-export interface LLMClient {
-    step(request: LLMRequest, stream?: false): Promise<Message>;
-    step(request: LLMRequest, stream: true): Promise<LLMStream>;
+export interface LLMClient<ExtraStepParams extends object = object> {
+    step<S extends boolean = false>(request: LLMRequest<ExtraStepParams>, stream?: S): Promise<[S] extends [true] ? LLMStream : Message>;
 }
 
