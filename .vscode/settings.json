@@ -12,6 +12,7 @@
         "quantizations",
         "stylelintcache",
         "tooltool",
+        "tsgo",
         "vuepress",
         "wscript"
     ]

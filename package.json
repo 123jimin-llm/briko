@@ -13,7 +13,7 @@
   "scripts": {
     "clean": "npx rimraf dist",
     "prepare": "pnpm build",
-    "build": "npx tsc",
+    "build": "npx tsgo",
     "build:watch": "npx tsc --watch",
     "lint": "npx eslint src/",
     "pretest": "pnpm build",
@@ -35,15 +35,16 @@
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.10.1",
+    "@typescript/native-preview": "7.0.0-dev.20251203.1",
     "chai": "^6.2.1",
     "eslint": "^9.39.1",
     "mocha": "^11.7.5",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.0"
+    "typescript-eslint": "^8.48.1"
   },
   "dependencies": {
-    "@jiminp/tooltool": "^0.3.0",
+    "@jiminp/tooltool": "github:123jimin/tooltool",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
     "openai": "^6.9.1"
   }
