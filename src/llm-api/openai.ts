@@ -4,17 +4,6 @@ import { ChatCompletionCreateParamsStreaming, ChatCompletionMessage } from "open
 import { createDecoder, createEncoder, Message, OpenAIChatCodec } from "llm-msg-io";
 import { EndpointParams, CreateChatCompletionFunction } from "./type.js";
 
-export function createOpenAIClient(params: EndpointParams): OpenAI {
-    return new OpenAI({
-        baseURL: params.base_url,
-        apiKey: params.credential,
-        dangerouslyAllowBrowser: true,
-
-        defaultHeaders: {
-            "X-Stainless-Timeout": null,
-        },
-    });
-}
 
 export const createOpenAIChatCompletion: CreateChatCompletionFunction = async function*(llm, messages, signal) {
     const client = createOpenAIClient(llm);
