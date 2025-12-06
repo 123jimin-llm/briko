@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@jiminp/tooltool':
         specifier: github:123jimin/tooltool
-        version: https://codeload.github.com/123jimin/tooltool/tar.gz/5bbeebcacbbb68158c30d0d36552ea008f9d672b
+        version: https://codeload.github.com/123jimin/tooltool/tar.gz/2f0a76eced0b669544d8cd8a2345fab7341cfdc7
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cdfca2f8995efdc00404b7c9337e840b5a6efc54(@google/genai@1.29.0)(openai@6.9.1(ws@8.18.3))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f2af0fe7f33a3a2c4b4b51bebad13630dcf6768(@google/genai@1.29.0)(openai@6.10.0(ws@8.18.3))
       openai:
-        specifier: ^6.9.1
-        version: 6.9.1(ws@8.18.3)
+        specifier: ^6.10.0
+        version: 6.10.0(ws@8.18.3)
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.1
@@ -31,8 +31,8 @@ importers:
         specifier: ^24.10.1
         version: 24.10.1
       '@typescript/native-preview':
-        specifier: 7.0.0-dev.20251203.1
-        version: 7.0.0-dev.20251203.1
+        specifier: 7.0.0-dev.20251206.1
+        version: 7.0.0-dev.20251206.1
       chai:
         specifier: ^6.2.1
         version: 6.2.1
@@ -135,8 +135,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/5bbeebcacbbb68158c30d0d36552ea008f9d672b':
-    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/5bbeebcacbbb68158c30d0d36552ea008f9d672b}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/2f0a76eced0b669544d8cd8a2345fab7341cfdc7':
+    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/2f0a76eced0b669544d8cd8a2345fab7341cfdc7}
     version: 0.3.0
 
   '@pkgjs/parseargs@0.11.0':
@@ -220,43 +220,43 @@ packages:
     resolution: {integrity: sha512-BmxxndzEWhE4TIEEMBs8lP3MBWN3jFPs/p6gPm/wkv02o41hI6cq9AuSmGAaTTHPtA1FTi2jBre4A9rm5ZmX+Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-gMPW/y89KANC0fIqdudxwsxUOHTOyujaOGxyj4IOaFLIP+8/gofawsmdf9HVniPq4xCT7tMpiqa/b9btxJ5nGw==}
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-Lcm+cO/0d+iUNzpequh8v8rm7FKLLxnMv4cg59jkmeMNm6zLe8UHFJVKd4KSUeTBp6DrF1BBXkahIwecR21YXA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-BG/bCAZcTGNM4bQMwY4hI0l70QaxQW9qwJ04GZJL02LAnaQVai8o5X/ghU6awkXFt9CTXdXBWn+hKNb+IiHG+w==}
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-RR3flM+2oRZP8HMh8mfUzOitUVBE3kbXBT1qqjQvU5GkFGKEU0DH2OZ35YV/ufVHBsRygXNbahw2heE08Jvk6A==}
     cpu: [x64]
     os: [darwin]
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-UGrYYbYbyjlklDubWE93E84WU6jrCGsjpJ2+/GFf4keB3IUrvg9lRqgQ3DUYW4p5kXJR+YC42HnG+OXkN+s6Pw==}
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-/KXFbcTuW/2k+CspZjraCVLNBnoDGFARYYaydKj/OrZwcGb1HgCT8X52ICzf0lHnc7W0slKAIzEtq8vonyCrAw==}
     cpu: [arm64]
     os: [linux]
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-iGrXfVUWtXgiaiVX7FhFVYFz3qFklta2kQEx0VX+km/tBVFMt+egI36tflKYuR7UE5n+0kboKldtyKgmfGrrjQ==}
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-NMndfbNZiYALizEJ6+5RJl5vp7TMjVa0mW4sBFP/W+AECf1D0NZ1jffHBdwRgHr6inehw93cL78XcNWm+l89QA==}
     cpu: [arm]
     os: [linux]
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-s3VZtFQGktU1ph0q3v8T2tVsgTrRoiaWFknt2vrErxKnzfQgChWOlM0o7Geaj/y1dnrOGWO/cHwMCSb7vd2fgw==}
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-qOKTazp43tE6imN/+y+s8MdtaJLnH98YILdr6V5pLVUxY1fiFnAX/LXv/zDd6ree6rEn102kLuaMGih7PNJqHw==}
     cpu: [x64]
     os: [linux]
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-rcaW7Kn7Ja8J17wmc9UuOjf0LmlqPQYYnqQTdh/kj72FcK4l+8P7b1LcViQFcsOAiIcRZBKrEVZnZXNQxYdHMQ==}
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-6p2aDhxDr5lBGetFlZMNs3+W5lzUnAIR6BVnoPBc/oiNqWY929Sh2kA0poTx2piUvpi8xUs6k1MWjonZP5UbgQ==}
     cpu: [arm64]
     os: [win32]
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-+DSMCGE7VZWjYzbWDuIenBW2tUclUqAGi7pcOgGq3BpwPEqyVhdQh5ggOk087xgshBv5Wj/yAdXA9gQFAFxpEQ==}
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-fsLQ21YABSaIrtuHLs+9fL2s3kc8bHF7UB4TatMwnFCzGvQJ7L1b5snfSjnSZeh3ETTeING8f9YHjiIf0h4jpA==}
     cpu: [x64]
     os: [win32]
 
-  '@typescript/native-preview@7.0.0-dev.20251203.1':
-    resolution: {integrity: sha512-u6kHGmbkB4WQ2XjQUVq6PixV92biRclTBAq8r09L/MGzsiVREdYzf/Bf1W4aTDcDSu6UQ3hjtBR6hROQRPrMXQ==}
+  '@typescript/native-preview@7.0.0-dev.20251206.1':
+    resolution: {integrity: sha512-wog5hWVS+bYjFTpxtr+8qxqjhTKpAvlDCivvW592zctOcO+e9iLbBBLU3nDZdXW06rEA2zwjOqEPbsUcM/mcEw==}
     hasBin: true
 
   acorn-jsx@5.3.2:
@@ -627,8 +627,8 @@ packages:
   jwa@2.0.1:
     resolution: {integrity: sha512-hRF04fqJIP8Abbkq5NKGN0Bbr3JxlQ+qhZufXVr0DvujKy93ZCbXZMHDL4EOtodSbCWxOqR8MS1tXA5hwqCXDg==}
 
-  jws@4.0.0:
-    resolution: {integrity: sha512-KDncfTmOZoOMTFG4mBlG0qUIOlc03fmzH+ru6RgYVZhPkyiy/92Owlt/8UEN+a4TXR1FQetfIpJE8ApdvdVxTg==}
+  jws@4.0.1:
+    resolution: {integrity: sha512-EKI/M/yqPncGUUh44xz0PxSidXFr/+r0pA70+gIYhjv+et7yxM+s29Y+VGDkovRofQem0fs7Uvf4+YmAdyRduA==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -637,8 +637,8 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cdfca2f8995efdc00404b7c9337e840b5a6efc54:
-    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cdfca2f8995efdc00404b7c9337e840b5a6efc54}
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f2af0fe7f33a3a2c4b4b51bebad13630dcf6768:
+    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f2af0fe7f33a3a2c4b4b51bebad13630dcf6768}
     version: 0.0.1
     peerDependencies:
       '@google/genai': ^1
@@ -697,8 +697,8 @@ packages:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  openai@6.9.1:
-    resolution: {integrity: sha512-vQ5Rlt0ZgB3/BNmTa7bIijYFhz3YBceAA3Z4JuoMSBftBF9YqFHIEhZakSs+O/Ad7EaoEimZvHxD5ylRjN11Lg==}
+  openai@6.10.0:
+    resolution: {integrity: sha512-ITxOGo7rO3XRMiKA5l7tQ43iNNu+iXGFAcf2t+aWVzzqRaS0i7m1K2BhxNdaveB+5eENhO0VY1FkiZzhBk4v3A==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -1015,7 +1015,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/5bbeebcacbbb68158c30d0d36552ea008f9d672b': {}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/2f0a76eced0b669544d8cd8a2345fab7341cfdc7': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -1129,36 +1129,36 @@ snapshots:
       '@typescript-eslint/types': 8.48.1
       eslint-visitor-keys: 4.2.1
 
-  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251203.1':
+  '@typescript/native-preview-darwin-arm64@7.0.0-dev.20251206.1':
     optional: true
 
-  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251203.1':
+  '@typescript/native-preview-darwin-x64@7.0.0-dev.20251206.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251203.1':
+  '@typescript/native-preview-linux-arm64@7.0.0-dev.20251206.1':
     optional: true
 
-  '@typescript/native-preview-linux-arm@7.0.0-dev.20251203.1':
+  '@typescript/native-preview-linux-arm@7.0.0-dev.20251206.1':
     optional: true
 
-  '@typescript/native-preview-linux-x64@7.0.0-dev.20251203.1':
+  '@typescript/native-preview-linux-x64@7.0.0-dev.20251206.1':
     optional: true
 
-  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251203.1':
+  '@typescript/native-preview-win32-arm64@7.0.0-dev.20251206.1':
     optional: true
 
-  '@typescript/native-preview-win32-x64@7.0.0-dev.20251203.1':
+  '@typescript/native-preview-win32-x64@7.0.0-dev.20251206.1':
     optional: true
 
-  '@typescript/native-preview@7.0.0-dev.20251203.1':
+  '@typescript/native-preview@7.0.0-dev.20251206.1':
     optionalDependencies:
-      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20251203.1
-      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20251203.1
-      '@typescript/native-preview-linux-arm': 7.0.0-dev.20251203.1
-      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20251203.1
-      '@typescript/native-preview-linux-x64': 7.0.0-dev.20251203.1
-      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20251203.1
-      '@typescript/native-preview-win32-x64': 7.0.0-dev.20251203.1
+      '@typescript/native-preview-darwin-arm64': 7.0.0-dev.20251206.1
+      '@typescript/native-preview-darwin-x64': 7.0.0-dev.20251206.1
+      '@typescript/native-preview-linux-arm': 7.0.0-dev.20251206.1
+      '@typescript/native-preview-linux-arm64': 7.0.0-dev.20251206.1
+      '@typescript/native-preview-linux-x64': 7.0.0-dev.20251206.1
+      '@typescript/native-preview-win32-arm64': 7.0.0-dev.20251206.1
+      '@typescript/native-preview-win32-x64': 7.0.0-dev.20251206.1
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
@@ -1439,7 +1439,7 @@ snapshots:
       gcp-metadata: 8.1.2
       google-logging-utils: 1.1.3
       gtoken: 8.0.0
-      jws: 4.0.0
+      jws: 4.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -1450,7 +1450,7 @@ snapshots:
   gtoken@8.0.0:
     dependencies:
       gaxios: 7.1.3
-      jws: 4.0.0
+      jws: 4.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -1520,7 +1520,7 @@ snapshots:
       ecdsa-sig-formatter: 1.0.11
       safe-buffer: 5.2.1
 
-  jws@4.0.0:
+  jws@4.0.1:
     dependencies:
       jwa: 2.0.1
       safe-buffer: 5.2.1
@@ -1534,12 +1534,12 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cdfca2f8995efdc00404b7c9337e840b5a6efc54(@google/genai@1.29.0)(openai@6.9.1(ws@8.18.3)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f2af0fe7f33a3a2c4b4b51bebad13630dcf6768(@google/genai@1.29.0)(openai@6.10.0(ws@8.18.3)):
     dependencies:
       '@google/genai': 1.29.0
       arktype: 2.1.28
       json5: 2.2.3
-      openai: 6.9.1(ws@8.18.3)
+      openai: 6.10.0(ws@8.18.3)
       smol-toml: 1.5.2
 
   locate-path@6.0.0:
@@ -1607,7 +1607,7 @@ snapshots:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
 
-  openai@6.9.1(ws@8.18.3):
+  openai@6.10.0(ws@8.18.3):
     optionalDependencies:
       ws: 8.18.3
 
