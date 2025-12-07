@@ -1,8 +1,8 @@
-import { StepResult, StepStream } from "llm-msg-io";
-import type { LLMRequest } from "../request/index.js";
+import type { StepResult, StepStream } from "llm-msg-io";
+import type { StepRequest } from "../request/index.js";
 
 export interface LLMClient<ExtraStepParams extends object = object> {
-    step<S extends boolean = false>(request: LLMRequest<ExtraStepParams>, stream?: S): Promise<[S] extends [true] ? StepStream : StepResult>;
+    step<S extends boolean = false>(request: StepRequest<ExtraStepParams>, stream?: S): Promise<[S] extends [true] ? StepStream : StepResult>;
 }
 
 export type APIType = 'openai' | 'gemini';

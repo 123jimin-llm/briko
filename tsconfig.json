@@ -1,18 +1,43 @@
 {
     "compilerOptions": {
-        "target": "ES2024",
-        "module": "ESNext",
-        "declaration": true,
-        "outDir": "dist",
-        "sourceMap": false,
-        "strict": true,
-        "skipLibCheck": true,
-        "moduleResolution": "node",
-        "isolatedModules": true,
         "incremental": true,
-        "paths": {
-            "@/*": ["./src/*"]
-        }
+
+        // File Layout
+        "rootDir": "./src",
+        "outDir": "./dist",
+
+        // Environment Settings
+        "module": "NodeNext",
+        "target": "ESNext",
+        "lib": ["ESNext"],
+        "types": ["mocha"],
+
+        // Other Outputs
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+
+        // Stricter Typechecking Options
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+
+        // Style Options
+        "noImplicitReturns": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+
+        // Recommended Options
+        "strict": true,
+        "jsx": "react-jsx",
+        "verbatimModuleSyntax": true,
+        "isolatedModules": true,
+        "noUncheckedSideEffectImports": true,
+        "moduleDetection": "force",
+        "skipLibCheck": true,
+
+        // For type stripping
+        "rewriteRelativeImportExtensions": true,
+        "erasableSyntaxOnly": true,
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src/**/*"]
 }

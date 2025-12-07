@@ -7,11 +7,10 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "!dist/**/*.spec.*",
-    "!**/*.tsbuildinfo"
+    "!dist/**/*.spec.*"
   ],
   "scripts": {
-    "clean": "npx rimraf dist",
+    "clean": "npx rimraf dist tsconfig.tsbuildinfo",
     "prepare": "pnpm build",
     "build": "npx tsgo",
     "build:watch": "npx tsc --watch",

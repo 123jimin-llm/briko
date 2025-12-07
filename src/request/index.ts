@@ -1,20 +1,25 @@
 export * from "./type.js";
 
-import { asMessageArray, MessageArrayLike } from "llm-msg-io";
-import type { LLMRequest } from "./type.js";
+import { asMessageArray, type MessageArrayLike } from "llm-msg-io";
+import type { StepRequest } from "./type.js";
 import { applyTransforms } from "@jiminp/tooltool";
 
-export function createLLMRequest<ExtraParams extends object = object>(
-    base: Partial<LLMRequest<ExtraParams>>,
+export function createStepRequest<ExtraParams extends object = object>(
+    base: Partial<StepRequest<ExtraParams>>,
     messages: MessageArrayLike,
     extra_params?: ExtraParams,
-): LLMRequest<ExtraParams> {
-    return {
+): StepRequest<ExtraParams> {
+    const req: StepRequest<ExtraParams> = {
         ...base,
         messages: asMessageArray(messages),
-        extra_params,
         use(...transforms) {
             return applyTransforms(this, transforms);
         },
     };
+
+    if(extra_params != null) {
+        req.extra_params = extra_params;
+    }
+
+    return req;
 }

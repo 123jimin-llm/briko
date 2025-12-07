@@ -4,7 +4,7 @@ import { ChatCompletionCreateParamsBase } from "openai/resources/chat/completion
 import { LLMClient, LLMEndpointParams } from "../type.js";
 import { OpenAIChatCodec } from "llm-msg-io";
 
-import { LLMRequest } from "../../request/type.js";
+import { StepRequest } from "../../request/type.js";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;
 
@@ -26,7 +26,7 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
     const streamDecoder = createStreamDecoder(OpenAIChatCodec);
 
     return {
-        async step<S extends boolean>(request: LLMRequest<OpenAIExtraStepParams>, stream = false): Promise<[S] extends [true] ? LLMStream : Message> {
+        async step<S extends boolean>(request: StepRequest<OpenAIExtraStepParams>, stream = false): Promise<[S] extends [true] ? LLMStream : Message> {
             type ReturnType = ([S] extends [true] ? LLMStream : Message);
             const raw_res = await client.chat.completions.create({
                 ...createOpenAIChatCompletionParams(request),
@@ -46,7 +46,7 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
     };
 }
 
-export function createOpenAIChatCompletionParams(request: LLMRequest<OpenAIExtraStepParams>): ChatCompletionCreateParamsBase {
+export function createOpenAIChatCompletionParams(request: StepRequest<OpenAIExtraStepParams>): ChatCompletionCreateParamsBase {
     return {
         ...request.extra_params,
     };

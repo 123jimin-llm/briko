@@ -1,5 +1,5 @@
 import { MessageArray } from "llm-msg-io";
-import { TransformFunction, NestedArray } from "@jiminp/tooltool";
+import type { TransformFunction, NestedArray } from "@jiminp/tooltool";
 
 /** Parameters for specifying a specific LLM model. */
 export interface ModelParams {
@@ -34,7 +34,7 @@ export interface SamplingParams {
     reasoning?: Partial<SamplingReasoningParams>;
 }
 
-export type LLMRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
+export type StepRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
     /** Messages to send. */
     messages: MessageArray;
 
@@ -42,6 +42,6 @@ export type LLMRequestParams<ExtraParams extends object = object> = Partial<Mode
     extra_params?: ExtraParams;
 };
 
-export type LLMRequest<ExtraParams extends object = object> = LLMRequestParams<ExtraParams> & {
-    use(...transforms: NestedArray<TransformFunction<LLMRequest<ExtraParams>>>): LLMRequest<ExtraParams>;
+export type StepRequest<ExtraParams extends object = object> = StepRequestParams<ExtraParams> & {
+    use(...transforms: NestedArray<TransformFunction<StepRequest<ExtraParams>>>): StepRequest<ExtraParams>;
 };

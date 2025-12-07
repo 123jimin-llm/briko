@@ -1,6 +1,5 @@
 import { MessageArray } from "llm-msg-io";
 import type { History } from "./type.js";
-import { ContextWindowConstraint } from "../type.js";
 
 /** A half-open interval. */
 export interface TreeHistorySpan {

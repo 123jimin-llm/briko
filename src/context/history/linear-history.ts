@@ -1,6 +1,6 @@
 import { MessageArray } from "llm-msg-io";
 import type { History } from "./type.js";
-import { ContextWindowConstraint } from "../type.js";
+import type { ContextWindowConstraint } from "../type.js";
 
 export class LinearHistory implements History {
     /** The list of messages in the history. */
