@@ -1,10 +1,10 @@
 import OpenAI, { ClientOptions } from "openai";
 import { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions.mjs";
 
-import { LLMClient, LLMEndpointParams, LLMStream } from "../type.js";
-import { createDecoder, Message } from "llm-msg-io";
-import { LLMRequest } from "../../request/type.js";
+import { LLMClient, LLMEndpointParams } from "../type.js";
+import { OpenAIChatCodec } from "llm-msg-io";
 
+import { LLMRequest } from "../../request/type.js";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;
 
@@ -21,21 +21,33 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
         ...params.extra,
     });
 
+    const encoder = createEncoder(OpenAIChatCodec);
+    const decoder = createDecoder(OpenAIChatCodec);
+    const streamDecoder = createStreamDecoder(OpenAIChatCodec);
+
     return {
         async step<S extends boolean>(request: LLMRequest<OpenAIExtraStepParams>, stream = false): Promise<[S] extends [true] ? LLMStream : Message> {
             type ReturnType = ([S] extends [true] ? LLMStream : Message);
-            const raw_res = await client.responses.create({
-                ...createOpenAIResponseCreateParams(request),
+            const raw_res = await client.chat.completions.create({
+                ...createOpenAIChatCompletionParams(request),
                 stream,
             });
 
             if(stream) {
-                return createLLMStream(raw_res as Stream<ResponseStreamEvent>) as ReturnType;
+                return streamDecoder(raw_res as OpenAIChatCompletionStream) as ReturnType;
+            } else {
+                return decoder(raw_res as OpenAI.ChatCompletion).messages as ReturnType;
             }
 
             const res = raw_res as OpenAI.Responses.Response;
             const {messages} = createDecoder(OpenAIResponseOutputCodec)(res);
             return messages.at(-1) as ReturnType;
         }
+    };
+}
+
+export function createOpenAIChatCompletionParams(request: LLMRequest<OpenAIExtraStepParams>): ChatCompletionCreateParamsBase {
+    return {
+        ...request.extra_params,
     };
 }
