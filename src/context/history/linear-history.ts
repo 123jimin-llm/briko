@@ -22,7 +22,8 @@ export class LinearHistory implements History {
         let end_index = this.history.length;
 
         for(let i = this.history.length - 1; i >= 0; --i) {
-            const message = this.history[i];
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            const message = this.history[i]!;
             const message_tokens = await measure.getNumTokens([message]);
             total_tokens += message_tokens;
 

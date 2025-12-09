@@ -4,7 +4,7 @@
 import * as readline from "node:readline/promises";
 import { stdin, stdout } from "node:process";
 
-import { createOpenAIChatCompletion, LinearHistory } from "../dist/index.js";
+import { createOpenAIClient, LinearHistory } from "../dist/index.js";
 
 async function main() {
     const rl = readline.createInterface({input: stdin, output: stdout});
