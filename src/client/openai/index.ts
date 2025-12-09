@@ -1,10 +1,9 @@
-import OpenAI, { ClientOptions } from "openai";
-import { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions.mjs";
+import OpenAI, { type ClientOptions } from "openai";
+import type { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions.mjs";
 
-import { LLMClient, LLMEndpointParams } from "../type.js";
-import { OpenAIChatCodec } from "llm-msg-io";
-
-import { StepRequest } from "../../request/type.js";
+import type { StepRequest } from "../../request/type.ts";
+import type { LLMClient, LLMEndpointParams } from "../type.js";
+import { wrapOpenAIChat, type StepResult, type StepStream } from "llm-msg-io";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;
 
@@ -21,33 +20,24 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
         ...params.extra,
     });
 
-    const encoder = createEncoder(OpenAIChatCodec);
-    const decoder = createDecoder(OpenAIChatCodec);
-    const streamDecoder = createStreamDecoder(OpenAIChatCodec);
-
     return {
-        async step<S extends boolean>(request: StepRequest<OpenAIExtraStepParams>, stream = false): Promise<[S] extends [true] ? LLMStream : Message> {
-            type ReturnType = ([S] extends [true] ? LLMStream : Message);
-            const raw_res = await client.chat.completions.create({
-                ...createOpenAIChatCompletionParams(request),
-                stream,
+        async step<S extends boolean>(req: StepRequest<OpenAIExtraStepParams>, stream: S = false as S): Promise<[S] extends [true] ? StepStream : StepResult> {
+            const innerStep = wrapOpenAIChat((api_req) => {
+                return client.chat.completions.create({
+                    ...api_req,
+                    ...createOpenAIChatCompletionParams(req),
+                    stream,
+                });
             });
 
-            if(stream) {
-                return streamDecoder(raw_res as OpenAIChatCompletionStream) as ReturnType;
-            } else {
-                return decoder(raw_res as OpenAI.ChatCompletion).messages as ReturnType;
-            }
-
-            const res = raw_res as OpenAI.Responses.Response;
-            const {messages} = createDecoder(OpenAIResponseOutputCodec)(res);
-            return messages.at(-1) as ReturnType;
+            return innerStep(req) as Promise<[S] extends [true] ? StepStream : StepResult>;
         }
     };
 }
 
-export function createOpenAIChatCompletionParams(request: StepRequest<OpenAIExtraStepParams>): ChatCompletionCreateParamsBase {
+export function createOpenAIChatCompletionParams(req: StepRequest<OpenAIExtraStepParams>): Omit<ChatCompletionCreateParamsBase, 'messages'> {
     return {
-        ...request.extra_params,
+        model: req.model ?? "gpt-5.1-mini",
+        ...req.extra_params,
     };
 }
