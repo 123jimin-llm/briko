@@ -1,7 +1,7 @@
-export * from "./type.js";
+export * from "./type.ts";
 
 import { asMessageArray, type MessageArrayLike } from "llm-msg-io";
-import type { StepRequest } from "./type.js";
+import type { StepRequest } from "./type.ts";
 import { applyTransforms } from "@jiminp/tooltool";
 
 export function createStepRequest<ExtraParams extends object = object>(

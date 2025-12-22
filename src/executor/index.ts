@@ -1,4 +1,4 @@
-export type * from "./type.js";
+export type * from "./type.ts";
 
 /*
 // Scratch
