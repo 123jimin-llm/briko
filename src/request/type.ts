@@ -1,27 +1,26 @@
 import { type } from "arktype";
 import type { MessageArray } from "llm-msg-io";
 
-import { exportType } from "../util/type.ts";
 import type { NestedArray, TransformFunction } from "@jiminp/tooltool";
 
 /** Parameters for specifying a specific LLM model. */
-export const ModelParams = exportType(type({
+export const ModelParams = type({
     model: "string",
-}));
+});
 export type ModelParams = typeof ModelParams.infer;
 
-export const SamplingReasoningEffort = exportType(type("'high'|'medium'|'low'"));
+export const SamplingReasoningEffort = type("'minimal'|'low'|'medium'|'high'|'xhigh'");
 export type SamplingReasoningEffort = typeof SamplingReasoningEffort.infer;
 
 /** Parameters for reasoning efforts. */
-export const SamplingReasoningParams = exportType(type({
+export const SamplingReasoningParams = type({
     effort: SamplingReasoningEffort,
     max_tokens: "number",
     exclude: "boolean",
-}));
+});
 export type SamplingReasoningParams = typeof SamplingReasoningParams.infer;
 
-export const SamplingParams = exportType(type({
+export const SamplingParams = type({
     /** Sampling temperature. */
     temperature: "number",
 
@@ -42,7 +41,7 @@ export const SamplingParams = exportType(type({
     max_tokens: "number",
     
     reasoning: SamplingReasoningParams.partial(),
-}));
+});
 export type SamplingParams = typeof SamplingParams.infer;
 
 export type StepRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
