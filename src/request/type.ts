@@ -1,38 +1,49 @@
-import { MessageArray } from "llm-msg-io";
-import type { TransformFunction, NestedArray } from "@jiminp/tooltool";
+import { type } from "arktype";
+import type { MessageArray } from "llm-msg-io";
+
+import { exportType } from "../util/type.ts";
+import type { NestedArray, TransformFunction } from "@jiminp/tooltool";
 
 /** Parameters for specifying a specific LLM model. */
-export interface ModelParams {
-    /** ID for a model. */
-    model: string;
-}
+export const ModelParams = exportType(type({
+    model: "string",
+}));
+export type ModelParams = typeof ModelParams.infer;
+
+export const SamplingReasoningEffort = exportType(type("'high'|'medium'|'low'"));
+export type SamplingReasoningEffort = typeof SamplingReasoningEffort.infer;
 
 /** Parameters for reasoning efforts. */
-export interface SamplingReasoningParams {
-    effort: 'high'|'medium'|'low';
-    max_tokens: number;
-    exclude: boolean;
-}
+export const SamplingReasoningParams = exportType(type({
+    effort: SamplingReasoningEffort,
+    max_tokens: "number",
+    exclude: "boolean",
+}));
+export type SamplingReasoningParams = typeof SamplingReasoningParams.infer;
 
-export interface SamplingParams {
+export const SamplingParams = exportType(type({
     /** Sampling temperature. */
-    temperature?: number;
+    temperature: "number",
+
     /** Cumulative probability of top tokens to consider. */
-    top_p?: number;
+    top_p: "number",
+
     /** \# of top tokens to consider. */
-    top_k?: number;
+    top_k: "number",
+    
     /** Minimal probability for a token, relative to the most likely token. */
-    min_p?: number;
+    min_p: "number",
+    
     /** Top P, relative to the most likely token. */
-    top_a?: number;
-
-    seed?: string|number;
-
+    top_a: "number",
+    seed: type("string|number").pipe((v) => `${v}`),
+    
     /** Max \# of tokens to include in output. */
-    max_tokens?: number;
-
-    reasoning?: Partial<SamplingReasoningParams>;
-}
+    max_tokens: "number",
+    
+    reasoning: SamplingReasoningParams.partial(),
+}));
+export type SamplingParams = typeof SamplingParams.infer;
 
 export type StepRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
     /** Messages to send. */

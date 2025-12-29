@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@jiminp/tooltool": "github:123jimin/tooltool",
+    "arktype": "^2.1.29",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
     "openai": "^6.10.0"
   }
