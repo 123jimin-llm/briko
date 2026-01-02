@@ -24,6 +24,8 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
 
     return {
         async step<S extends boolean>(req: StepRequest<OpenAIExtraStepParams>, stream: S = false as S): Promise<[S] extends [true] ? StepStream : StepResult> {
+            type ReturnType = [S] extends [true] ? StepStream : StepResult;
+            
             const innerStep = wrapOpenAIChat((api_req) => {
                 return client.chat.completions.create({
                     ...api_req,
@@ -32,7 +34,7 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
                 });
             });
 
-            return innerStep(req) as Promise<[S] extends [true] ? StepStream : StepResult>;
+            return innerStep(req) as Promise<ReturnType>;
         }
     };
 }
