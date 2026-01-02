@@ -44,6 +44,7 @@
     "typescript-eslint": "^8.51.0"
   },
   "dependencies": {
+    "@google/genai": "^1.34.0",
     "@jiminp/tooltool": "github:123jimin/tooltool",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
     "openai": "^6.15.0"

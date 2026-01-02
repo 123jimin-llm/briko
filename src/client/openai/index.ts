@@ -5,6 +5,7 @@ import type { ChatCompletionCreateParamsBase } from "openai/resources/chat/compl
 import type { SamplingReasoningEffort, StepRequest } from "../../request/type.ts";
 import type { LLMClient, LLMEndpointParams } from "../type.js";
 import { wrapOpenAIChat, type StepResult, type StepStream } from "llm-msg-io";
+import { recursiveMerge } from "@jiminp/tooltool";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;
 
@@ -62,8 +63,5 @@ export function createOpenAIChatCompletionParams(req: StepRequest<OpenAIExtraSte
         params.reasoning_effort = getOpenAIReasoningEffort(req.reasoning.effort);
     }
 
-    return {
-        ...params,
-        ...req.extra_params,
-    };
+    return recursiveMerge(params, req.extra_params);
 }

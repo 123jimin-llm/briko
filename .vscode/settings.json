@@ -3,6 +3,7 @@
         "briko",
         "dotenv",
         "eslintcache",
+        "genai",
         "jimin",
         "jiminp",
         "jscoverage",
