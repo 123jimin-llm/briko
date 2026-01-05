@@ -10,12 +10,16 @@ export interface CreateGeminiClientParams extends LLMEndpointParams {
     extra?: GoogleGenAIOptions;
 }
 
-export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<GeminiExtraStepParams> {
-    const client = new GoogleGenAI({
+export function createRawGeminiClient(params: CreateGeminiClientParams): GoogleGenAI {
+    return new GoogleGenAI({
         apiKey: params.api_key ?? "",
 
         ...params.extra,
     });
+}
+
+export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<GeminiExtraStepParams> {
+    const client = createRawGeminiClient(params);
 
     return {
         async step<S extends boolean>(req: StepRequest<GeminiExtraStepParams>, stream: S = false as S): Promise<[S] extends [true] ? StepStream : StepResult> {

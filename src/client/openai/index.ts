@@ -13,14 +13,18 @@ export interface CreateOpenAIClientParams extends LLMEndpointParams {
     extra?: ClientOptions;
 }
 
-export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<OpenAIExtraStepParams> {
-    const client = new OpenAI({
+export function createRawOpenAIClient(params: CreateOpenAIClientParams): OpenAI {
+    return new OpenAI({
         baseURL: params.base_url,
         apiKey: params.api_key,
         dangerouslyAllowBrowser: true,
 
         ...params.extra,
     });
+}
+
+export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<OpenAIExtraStepParams> {
+    const client = createRawOpenAIClient(params);
 
     return {
         async step<S extends boolean>(req: StepRequest<OpenAIExtraStepParams>, stream: S = false as S): Promise<[S] extends [true] ? StepStream : StepResult> {
