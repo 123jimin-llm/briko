@@ -8,7 +8,7 @@ export interface LLMClient<ExtraStepParams extends object = object> {
 }
 
 export const LLMAPIType = type("'openai'|'gemini'");
-export type APIType = typeof LLMAPIType.infer;
+export type LLMAPIType = typeof LLMAPIType.infer;
 
 export const LLMEndpointParams = type({
     base_url: "string",
