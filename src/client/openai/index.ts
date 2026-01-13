@@ -38,7 +38,7 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
                 });
             });
 
-            return innerStep(req) as Promise<ReturnType>;
+            return innerStep({...req, stream}) as Promise<ReturnType>;
         }
     };
 }
