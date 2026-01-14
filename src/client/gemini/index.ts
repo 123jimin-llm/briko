@@ -62,6 +62,8 @@ export function createGeminiGenerateContentParams(req: StepRequest<GeminiExtraSt
 
     let config: GenerateContentConfig|null = null;
 
+    if(req.abort_signal) (config ??= {}).abortSignal = req.abort_signal;
+
     if(req.temperature != null) (config ??= {}).temperature = req.temperature;
 
     if(req.top_p != null) (config ??= {}).topP = req.top_p;

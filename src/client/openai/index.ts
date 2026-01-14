@@ -35,6 +35,8 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
                     ...api_req,
                     ...createOpenAIChatCompletionParams(req),
                     stream,
+                }, {
+                    signal: req.abort_signal,
                 });
             });
 

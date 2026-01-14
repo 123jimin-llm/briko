@@ -45,6 +45,8 @@ export const SamplingParams = type({
 export type SamplingParams = typeof SamplingParams.infer;
 
 export type StepRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
+    abort_signal?: AbortSignal;
+
     /** Messages to send. */
     messages: MessageArray;
 
