@@ -13,7 +13,7 @@ importers:
         version: 1.35.0
       '@jiminp/tooltool':
         specifier: github:123jimin/tooltool
-        version: https://codeload.github.com/123jimin/tooltool/tar.gz/0eb16344d5d509ac59a62cc6893a3623ec40ba45
+        version: https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
         version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/7bb94c4018fa89cd48cd78bbcb144120bf3fc1c1(@google/genai@1.35.0)(openai@6.16.0(ws@8.19.0))
@@ -141,8 +141,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/0eb16344d5d509ac59a62cc6893a3623ec40ba45':
-    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/0eb16344d5d509ac59a62cc6893a3623ec40ba45}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58':
+    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58}
     version: 0.3.0
 
   '@pkgjs/parseargs@0.11.0':
@@ -1018,7 +1018,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/0eb16344d5d509ac59a62cc6893a3623ec40ba45': {}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
