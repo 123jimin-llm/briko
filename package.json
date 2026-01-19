@@ -49,6 +49,12 @@
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
     "openai": "^6.16.0"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@jiminp/tooltool",
+      "llm-msg-io"
+    ]
+  },
   "peerDependencies": {
     "arktype": "^2.1.29"
   }

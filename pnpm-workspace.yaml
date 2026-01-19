@@ -1,2 +1,3 @@
 onlyBuiltDependencies:
+  - "@jiminp/tooltool"
   - "llm-msg-io"
