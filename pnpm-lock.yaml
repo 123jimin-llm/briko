@@ -14,6 +14,9 @@ importers:
       '@jiminp/tooltool':
         specifier: github:123jimin/tooltool
         version: https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58
+      arktype:
+        specifier: ^2.1.29
+        version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
         version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/e80a5b8300967e70f1a7a3cf77b4f73fc8409612(@google/genai@1.38.0)(openai@6.16.0(ws@8.19.0))
@@ -36,9 +39,6 @@ importers:
       '@types/node':
         specifier: ^25.0.10
         version: 25.0.10
-      arktype:
-        specifier: ^2.1.29
-        version: 2.1.29
       chai:
         specifier: ^6.2.2
         version: 6.2.2
