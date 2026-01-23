@@ -33,18 +33,18 @@
     "@eslint/js": "^9.39.2",
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.0.8",
-    "@typescript/native-preview": "7.0.0-dev.20260114.1",
+    "@types/node": "^25.0.10",
+    "@typescript/native-preview": "7.0.0-dev.20260122.4",
     "arktype": "^2.1.29",
     "chai": "^6.2.2",
     "eslint": "^9.39.2",
     "mocha": "^11.7.5",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.53.0"
+    "typescript-eslint": "^8.53.1"
   },
   "dependencies": {
-    "@google/genai": "^1.35.0",
+    "@google/genai": "^1.38.0",
     "@jiminp/tooltool": "github:123jimin/tooltool",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
     "openai": "^6.16.0"
