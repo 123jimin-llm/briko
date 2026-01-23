@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "npx rimraf dist tsconfig.tsbuildinfo",
     "prepare": "pnpm build",
-    "build": "npx tsgo",
+    "build": "npx tsc",
     "build:watch": "npx tsc --watch",
     "lint": "npx eslint src/",
     "pretest": "pnpm build",
@@ -35,7 +35,6 @@
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.0.10",
-    "@typescript/native-preview": "7.0.0-dev.20260122.4",
     "arktype": "^2.1.29",
     "chai": "^6.2.2",
     "eslint": "^9.39.2",
