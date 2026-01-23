@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/123jimin-llm/briko",
   "devDependencies": {
+    "@ark/schema": "^0.56.0",
     "@eslint/js": "^9.39.2",
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",

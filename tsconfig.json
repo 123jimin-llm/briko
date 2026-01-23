@@ -10,7 +10,7 @@
         "module": "NodeNext",
         "target": "ESNext",
         "lib": ["ESNext"],
-        "types": ["mocha"],
+        "types": ["@ark/schema", "mocha"],
 
         // Other Outputs
         "sourceMap": true,
