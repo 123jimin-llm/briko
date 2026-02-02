@@ -1,26 +1,38 @@
 # Briko
 
-A collection of utilities for managing LLM context and executor.
+Briko is a collection of utilities for building LLM agents in JavaScript.
 
-Each component of this library is designed to be modular; it's possible to use only the parts you need.
+Each component of Briko is designed to be modular, so you can use only the parts you need.
 
-## Context
+## Installation
 
-This module provides structures that can be used to build parts of the context window.
+> [!CAUTION]
+> Briko is currently in active development, and no backward compatibility is guaranteed.
 
-### History
+```bash
+pnpm add briko
+```
 
-Most often, AI agents maintain a *history* of messages; an append-only list of messages. Fitting the history in the context window is a common problem.
+## Features
 
-#### `LinearHistory`
+### Message Serialization
 
-#### `TreeHistory`
+Briko is based on [llm-msg-io](https://github.com/123jimin-llm/llm-msg-io), so codecs for `llm-msg-io` can be used.
 
-## LLM API
+### LLM API Normalization
 
-This module provides an abstraction layer over different LLM APIs.
+```ts
+// TODO: set default endpoint URL
+const client = createOpenAIClient();
 
-## Executor
+// TODO: enable one-argument creation
+const request = createStepRequest([{role: 'user', content: "Hello! Who are you?"}]);
+
+const response = await client.step(request);
+const text = await response.text();
+```
+
+TODO: `text`, `textArray`, `message`, `messageArray`, ...
 
 ## Development
 
