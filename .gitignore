@@ -133,3 +133,6 @@ dist
 # - https://github.com/pnpm/pnpm/issues/7330#issuecomment-2708137623
 v8-compile-cache*/
 node-compile-cache/
+
+# Documentation
+/docs/

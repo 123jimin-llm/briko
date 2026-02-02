@@ -1,0 +1,11 @@
+{
+    "theme": "default",
+    "entryPoints": ["src/*/index.ts"],
+    "entryPointStrategy": "resolve",
+    "exclude": ["**/*.spec.ts"],
+    "groupReferencesByType": true,
+    "useFirstParagraphOfCommentAsSummary": true,
+    "navigationLinks": {
+        "GitHub": "https://github.com/123jimin-llm/briko",
+    }
+}
