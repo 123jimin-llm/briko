@@ -1,7 +1,15 @@
 name: Build and Test
-on: push
+
+on:
+  workflow_call:
+    inputs:
+      pnpm-version:
+        description: "pnpm version"
+        type: string
+        default: "10.28.2"
+
 jobs:
-  build:
+  build-test:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
@@ -10,7 +18,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.11
+          version: ${{ inputs.pnpm-version }}
           run_install: true
       - name: Build
         run: |
