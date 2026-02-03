@@ -1,8 +1,10 @@
 {
+    "name": "Briko",
     "theme": "default",
-    "entryPoints": ["src/*/index.ts"],
+    "entryPoints": ["src/**/index.ts"],
     "entryPointStrategy": "resolve",
     "exclude": ["**/*.spec.ts"],
+    "excludeReferences": true,
     "groupReferencesByType": true,
     "useFirstParagraphOfCommentAsSummary": true,
     "navigationLinks": {

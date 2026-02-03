@@ -1,3 +1,9 @@
+/**
+ * A client module for Gemini API.
+ * 
+ * @module
+ */
+
 import { GoogleGenAI, ThinkingLevel, type GenerateContentConfig, type GenerateContentParameters, type GoogleGenAIOptions, type ThinkingConfig } from "@google/genai";
 import type { LLMClient, LLMEndpointParams } from "../type.ts";
 import type { SamplingReasoningEffort, StepRequest } from "../../request/type.ts";

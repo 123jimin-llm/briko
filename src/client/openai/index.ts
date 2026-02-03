@@ -1,3 +1,9 @@
+/**
+ * A client module for OpenAI and OpenAI-compatible LLM API providers.
+ * 
+ * @module
+ */
+
 import OpenAI, { type ClientOptions } from "openai";
 import type { ReasoningEffort } from "openai/resources";
 import type { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions.mjs";

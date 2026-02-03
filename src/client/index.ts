@@ -1,3 +1,10 @@
+/**
+ * The `client` module provides an easy-to-use API wrapper for using LLMs.
+ * 
+ * - **Client**
+ * @module
+ */
+
+export * from "./type.ts";
 export * from "./openai/index.ts";
 export * from "./gemini/index.ts";
-export * from "./type.ts";

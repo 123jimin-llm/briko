@@ -1,5 +1,3 @@
-# Briko
-
 Briko is a collection of utilities for building LLM agents in JavaScript.
 
 Each component of Briko is designed to be modular, so you can use only the parts you need.
