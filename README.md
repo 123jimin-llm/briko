@@ -19,18 +19,25 @@ Briko is based on [llm-msg-io](https://github.com/123jimin-llm/llm-msg-io), so c
 
 ### LLM API Normalization
 
-```ts
-// TODO: set default endpoint URL
-const client = createOpenAIClient();
+TODO: Implement new API like this:
 
-// TODO: enable one-argument creation
+```ts
+const client = createOpenAIClient();
 const request = createStepRequest([{role: 'user', content: "Hello! Who are you?"}]);
 
-const response = await client.step(request);
-const text = await response.text();
-```
+const res = client.step(request, true);
 
-TODO: `text`, `textArray`, `message`, `messageArray`, ...
+res.on('...', );
+
+for await(const event in res.events()) {
+  ...
+}
+
+await res.message();
+await res.messages();
+await res.text();
+
+```
 
 ## Development
 
