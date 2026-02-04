@@ -6,7 +6,7 @@
 
 import { GoogleGenAI, ThinkingLevel, type GenerateContentConfig, type GenerateContentParameters, type GoogleGenAIOptions, type ThinkingConfig } from "@google/genai";
 import type { LLMClient, LLMEndpointParams } from "../type.ts";
-import type { SamplingReasoningEffort, StepRequest } from "../../request/type.ts";
+import type { SamplingReasoningEffort, StepRequest } from "../step/request/type.ts";
 import { recursiveMerge } from "@jiminp/tooltool";
 import { createStepDecoder, createStepEncoder, createStepStreamDecoder, GeminiGenerateContentCodec, type StepResult, type StepStream } from "llm-msg-io";
 

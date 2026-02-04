@@ -2,7 +2,7 @@ import { type } from "arktype";
 import type { MessageArray } from "llm-msg-io";
 
 import type { NestedArray, TransformFunction } from "@jiminp/tooltool";
-import { exportType } from "../util/type.ts";
+import { exportType } from "../../../util/type.ts";
 
 /** Parameters for specifying a specific LLM model. */
 export const ModelParams = exportType(type({
