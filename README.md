@@ -19,23 +19,28 @@ Briko is based on [llm-msg-io](https://github.com/123jimin-llm/llm-msg-io), so c
 
 ### LLM API Normalization
 
-TODO: Implement new API like this:
-
 ```ts
 const client = createOpenAIClient();
 const request = createStepRequest([{role: 'user', content: "Hello! Who are you?"}]);
 
+// Create a streaming chat completion request.
 const res = client.step(request, true);
 
-res.on('...', );
+// All of the following methods can be used at the same time!
 
+// Register event listeners, or...
+res.on('message.delta', (delta) => { ... });
+
+// ... iterate through events, or...
 for await(const event in res.events()) {
   ...
 }
 
+// ... use one of the following methods.
 await res.message();
 await res.messages();
 await res.text();
+await res.result();
 
 ```
 
