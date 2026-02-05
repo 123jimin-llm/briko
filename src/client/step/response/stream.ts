@@ -53,7 +53,7 @@ export function createStepResponse<DecodedType extends StepResult = StepResult>(
             return response;
         },
 
-        events(): AsyncIterable<StepStreamEvent> {
+        events(): AsyncGenerator<StepStreamEvent> {
             return events.entries();
         },
 

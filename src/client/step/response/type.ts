@@ -9,7 +9,7 @@ export interface StepResponse<DecodedType extends StepResult = StepResult> {
     on<T extends StepStreamEventType>(type: T, handler: StepStreamEventHandler<T>): this;
 
     /** Iterate through all events from this stream, including past ones. */
-    events(): AsyncIterable<StepStreamEvent>;
+    events(): AsyncGenerator<StepStreamEvent>;
 
     /** Get the last message. */
     message(): Promise<Message>;
