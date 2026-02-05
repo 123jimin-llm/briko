@@ -19,7 +19,7 @@ importers:
         version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0))
       openai:
         specifier: ^6.17.0
         version: 6.17.0(ws@8.19.0)
@@ -663,8 +663,8 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6:
-    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6}
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9:
+    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9}
     version: 0.2.0
     peerDependencies:
       '@google/genai': ^1
@@ -1626,7 +1626,7 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0)):
     dependencies:
       '@google/genai': 1.40.0
       arktype: 2.1.29

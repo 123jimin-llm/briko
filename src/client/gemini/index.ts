@@ -4,11 +4,16 @@
  * @module
  */
 
-import { GoogleGenAI, ThinkingLevel, type GenerateContentConfig, type GenerateContentParameters, type GoogleGenAIOptions, type ThinkingConfig } from "@google/genai";
-import type { LLMClient, LLMEndpointParams } from "../type.ts";
-import type { SamplingReasoningEffort, StepRequest } from "../step/request/type.ts";
 import { recursiveMerge } from "@jiminp/tooltool";
-import { createStepDecoder, createStepEncoder, createStepStreamDecoder, GeminiGenerateContentCodec, type StepResult, type StepStream } from "llm-msg-io";
+
+import type { GenerateContentConfig, GenerateContentParameters, GoogleGenAIOptions, ThinkingConfig } from "@google/genai";
+import { GoogleGenAI, ThinkingLevel } from "@google/genai";
+
+import { createStepDecoder, createStepEncoder, createStepStreamDecoder, GeminiGenerateContentCodec } from "llm-msg-io";
+
+import type { StepResponse, SamplingReasoningEffort, StepRequest } from "../step/index.ts";
+import { createStepResponse } from "../step/index.ts";
+import type { LLMClient, LLMEndpointParams } from "../type.js";
 
 export type GeminiExtraStepParams = Partial<GenerateContentParameters>;
 
@@ -28,9 +33,7 @@ export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<
     const client = createRawGeminiClient(params);
 
     return {
-        async step<S extends boolean>(req: StepRequest<GeminiExtraStepParams>, stream: S = false as S): Promise<[S] extends [true] ? StepStream : StepResult> {
-            type ReturnType = [S] extends [true] ? StepStream : StepResult;
-            
+        step(req: StepRequest<GeminiExtraStepParams>, stream: boolean = false): StepResponse {            
             const encoder = createStepEncoder(GeminiGenerateContentCodec);
             let api_req: GenerateContentParameters = encoder(req);
             api_req = recursiveMerge(
@@ -40,12 +43,10 @@ export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<
             
             if(stream) {
                 const decoder = createStepStreamDecoder(GeminiGenerateContentCodec);
-                const api_res = await client.models.generateContentStream(api_req);
-                return decoder(api_res) as ReturnType;
+                return createStepResponse(decoder(client.models.generateContentStream(api_req)));
             } else {
                 const decoder = createStepDecoder(GeminiGenerateContentCodec);
-                const api_res = await client.models.generateContent(api_req);
-                return decoder(api_res) as ReturnType;
+                return createStepResponse(client.models.generateContent(api_req).then(decoder));
             }
         }
     };

@@ -4,15 +4,17 @@
  * @module
  */
 
+import { recursiveMerge } from "@jiminp/tooltool";
+
 import OpenAI, { type ClientOptions } from "openai";
 import type { ReasoningEffort } from "openai/resources";
 import type { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions.mjs";
 
-import type { SamplingReasoningEffort, StepRequest } from "../step/request/type.ts";
-import type { LLMClient, LLMEndpointParams } from "../type.js";
 import {createStepEncoder, createStepStreamDecoder, createStepDecoder, OpenAIChatCodec} from "llm-msg-io";
-import type { StepResult, StepStream } from "llm-msg-io";
-import { recursiveMerge } from "@jiminp/tooltool";
+
+import type { StepResponse, SamplingReasoningEffort, StepRequest } from "../step/index.ts";
+import { createStepResponse } from "../step/index.ts";
+import type { LLMClient, LLMEndpointParams } from "../type.js";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;
 
@@ -34,9 +36,7 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
     const client = createRawOpenAIClient(params);
 
     return {
-        async step<S extends boolean>(req: StepRequest<OpenAIExtraStepParams>, stream: S = false as S): Promise<[S] extends [true] ? StepStream : StepResult> {
-            type ReturnType = [S] extends [true] ? StepStream : StepResult;
-
+        step(req: StepRequest<OpenAIExtraStepParams>, stream: boolean = false): StepResponse {
             const encoder = createStepEncoder(OpenAIChatCodec);
             let api_req = encoder(req);
             api_req = recursiveMerge(
@@ -46,13 +46,10 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
 
             if(stream) {
                 const decoder = createStepStreamDecoder(OpenAIChatCodec);
-                const api_res = await client.chat.completions.create({...api_req, stream: true});
-                return decoder(api_res) as ReturnType;
+                return createStepResponse(decoder(client.chat.completions.create({...api_req, stream: true})));
             } else {
                 const decoder = createStepDecoder(OpenAIChatCodec);
-                const api_res = await client.chat.completions.create({...api_req, stream: false});
-                const res: StepResult = decoder(api_res);
-                return res as ReturnType;
+                return createStepResponse(client.chat.completions.create({...api_req, stream: false}).then(decoder));
             }
         }
     };
