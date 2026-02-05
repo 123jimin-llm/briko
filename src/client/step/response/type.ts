@@ -2,15 +2,27 @@ import type { Message, MessageArray, StepResult, StepStreamEvent, StepStreamEven
 import type { StepStreamEventHandler } from "./handler.ts";
 
 export interface StepResponse<DecodedType extends StepResult = StepResult> {
+    /** Whether this response is being streamed. */
     readonly is_stream: boolean;
 
+    /** Register event handlers. */
     on<T extends StepStreamEventType>(type: T, handler: StepStreamEventHandler<T>): this;
+
+    /** Iterate through all events from this stream, including past ones. */
     events(): AsyncIterable<StepStreamEvent>;
 
+    /** Get the last message. */
     message(): Promise<Message>;
+
+    /** Get all messages from this response. */
     messages(): Promise<MessageArray>;
+
+    /** Get the text representation of this response. */
     text(): Promise<string>;
 
+    /** Get the result of this response. */
     result(): Promise<DecodedType>;
+
+    /** Wait for the response to complete. This is identical to `result()`. */
     done(): Promise<DecodedType>;
 }
