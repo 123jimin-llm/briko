@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@google/genai':
-        specifier: ^1.39.0
-        version: 1.39.0
+        specifier: ^1.40.0
+        version: 1.40.0
       '@jiminp/tooltool':
         specifier: github:123jimin/tooltool
-        version: https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58
+        version: https://codeload.github.com/123jimin/tooltool/tar.gz/3514d5eafbb5dae2a8676ec3e6aa57926a751aff
       arktype:
         specifier: ^2.1.29
         version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/8b879fffef5b3669cf46595b871ba86e22fd1fc2(@google/genai@1.39.0)(openai@6.17.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0))
       openai:
         specifier: ^6.17.0
         version: 6.17.0(ws@8.19.0)
@@ -107,8 +107,8 @@ packages:
   '@gerrit0/mini-shiki@3.22.0':
     resolution: {integrity: sha512-jMpciqEVUBKE1QwU64S4saNMzpsSza6diNCk4MWAeCxO2+LFi2FIFmL2S0VDLzEJCxuvCbU783xi8Hp/gkM5CQ==}
 
-  '@google/genai@1.39.0':
-    resolution: {integrity: sha512-Vz7AQsOdBeiIcxmXIQNy/hzDvyAOE1lSpWA10itUQza7h3aQFF6QSGaQ7o1GYsjMD3XslK4Ee/Ol0eLhRXb7gA==}
+  '@google/genai@1.40.0':
+    resolution: {integrity: sha512-fhIww8smT0QYRX78qWOiz/nIQhHMF5wXOrlXvj33HBrz3vKDBb+wibLcEmTA+L9dmPD4KmfNr7UF3LDQVTXNjA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.25.2
@@ -144,8 +144,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58':
-    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/3514d5eafbb5dae2a8676ec3e6aa57926a751aff':
+    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/3514d5eafbb5dae2a8676ec3e6aa57926a751aff}
     version: 0.3.0
 
   '@pkgjs/parseargs@0.11.0':
@@ -663,9 +663,9 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/8b879fffef5b3669cf46595b871ba86e22fd1fc2:
-    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/8b879fffef5b3669cf46595b871ba86e22fd1fc2}
-    version: 0.1.0
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6:
+    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6}
+    version: 0.2.0
     peerDependencies:
       '@google/genai': ^1
       openai: ^6
@@ -1050,7 +1050,7 @@ snapshots:
       '@shikijs/types': 3.22.0
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@google/genai@1.39.0':
+  '@google/genai@1.40.0':
     dependencies:
       google-auth-library: 10.5.0
       protobufjs: 7.5.4
@@ -1086,7 +1086,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/0307f6b4dbdabe997778bac7fc207e7c3e02db58': {}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/3514d5eafbb5dae2a8676ec3e6aa57926a751aff': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -1626,9 +1626,9 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/8b879fffef5b3669cf46595b871ba86e22fd1fc2(@google/genai@1.39.0)(openai@6.17.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/cfa0ef98c7c9a138a520bc60c5e1bd17cb7690a6(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0)):
     dependencies:
-      '@google/genai': 1.39.0
+      '@google/genai': 1.40.0
       arktype: 2.1.29
       json5: 2.2.3
       openai: 6.17.0(ws@8.19.0)

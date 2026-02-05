@@ -1,6 +1,7 @@
-import type { Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventHandler, StepStreamEventType } from "llm-msg-io";
+import type { Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType } from "llm-msg-io";
+import type { StepStreamEventHandler } from "./handler.ts";
 
-export interface StepResponse {
+export interface StepResponse<DecodedType extends StepResult = StepResult> {
     readonly is_stream: boolean;
 
     on<T extends StepStreamEventType>(type: T, handler: StepStreamEventHandler<T>): this;
@@ -10,6 +11,6 @@ export interface StepResponse {
     messages(): Promise<MessageArray>;
     text(): Promise<string>;
 
-    result(): Promise<StepResult>;
-    done(): Promise<StepResult>;
+    result(): Promise<DecodedType>;
+    done(): Promise<DecodedType>;
 }
