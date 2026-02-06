@@ -1,4 +1,4 @@
-import { createGeneratorController } from "@jiminp/tooltool";
+import { createAsyncChannel, pipeToAsyncSink } from "@jiminp/tooltool";
 
 import type { StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult } from "llm-msg-io";
 import { messageContentToText, stepResultPromiseToEvents } from "llm-msg-io";
@@ -16,45 +16,23 @@ export function createStepResponse<DecodedType extends StepResult = StepResult>(
     }
 
     const handlers: StepStreamEventHandlersRecord = {};
-    const events = createGeneratorController<StepStreamEvent, DecodedType>();
-    
+    const events = createAsyncChannel<StepStreamEvent, DecodedType>();
+
     void (async() => {
-        for await(const event of events.entries()) {
+        for await(const event of events) {
             invokeStepStreamEventHandlers(handlers, event);
         }
     })();
 
-    void (async() => {
-        let result: DecodedType;
-
-        try {
-            while(true) {
-                const {done, value} = await event_generator.next();
-                if(done) {
-                    result = value;
-                    break;
-                }
-
-                events.yeet(value);
-            }
-        } catch(err) {
-            events.fail(err);
-            return;
-        }
-
-        events.done(result);
-    })();
+    pipeToAsyncSink(event_generator, events);
 
     const response: StepResponse<DecodedType> = {
         is_stream,
+        events,
 
         on<T extends StepStreamEventType>(type: T, handler: StepStreamEventHandler<T>) {
             addStepStreamEventHandler(handlers, type, handler);
             return response;
-        },
-
-        events(): AsyncGenerator<StepStreamEvent> {
-            return events.entries();
         },
 
         async message() {

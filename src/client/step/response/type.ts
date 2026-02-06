@@ -1,15 +1,15 @@
 import type { Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType } from "llm-msg-io";
 import type { StepStreamEventHandler } from "./handler.ts";
+import type { AsyncChannel } from "@jiminp/tooltool";
 
 export interface StepResponse<DecodedType extends StepResult = StepResult> {
     /** Whether this response is being streamed. */
     readonly is_stream: boolean;
 
+    readonly events: AsyncChannel<StepStreamEvent, DecodedType>;
+
     /** Register event handlers. */
     on<T extends StepStreamEventType>(type: T, handler: StepStreamEventHandler<T>): this;
-
-    /** Iterate through all events from this stream, including past ones. */
-    events(): AsyncGenerator<StepStreamEvent>;
 
     /** Get the last message. */
     message(): Promise<Message>;

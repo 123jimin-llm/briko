@@ -53,7 +53,7 @@
     "@jiminp/tooltool": "github:123jimin/tooltool",
     "arktype": "^2.1.29",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
-    "openai": "^6.17.0"
+    "openai": "^6.18.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

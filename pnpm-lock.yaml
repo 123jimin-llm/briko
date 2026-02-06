@@ -13,16 +13,16 @@ importers:
         version: 1.40.0
       '@jiminp/tooltool':
         specifier: github:123jimin/tooltool
-        version: https://codeload.github.com/123jimin/tooltool/tar.gz/e907a9a7128beb06d5842507da04f37dab96cc23
+        version: https://codeload.github.com/123jimin/tooltool/tar.gz/13681fadce4b628e35b9d606539aa0a7bbc5c7dd
       arktype:
         specifier: ^2.1.29
         version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9(@google/genai@1.40.0)(openai@6.18.0(ws@8.19.0))
       openai:
-        specifier: ^6.17.0
-        version: 6.17.0(ws@8.19.0)
+        specifier: ^6.18.0
+        version: 6.18.0(ws@8.19.0)
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.2
@@ -144,8 +144,8 @@ packages:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/e907a9a7128beb06d5842507da04f37dab96cc23':
-    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/e907a9a7128beb06d5842507da04f37dab96cc23}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/13681fadce4b628e35b9d606539aa0a7bbc5c7dd':
+    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/13681fadce4b628e35b9d606539aa0a7bbc5c7dd}
     version: 0.3.0
 
   '@pkgjs/parseargs@0.11.0':
@@ -736,8 +736,8 @@ packages:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  openai@6.17.0:
-    resolution: {integrity: sha512-NHRpPEUPzAvFOAFs9+9pC6+HCw/iWsYsKCMPXH5Kw7BpMxqd8g/A07/1o7Gx2TWtCnzevVRyKMRFqyiHyAlqcA==}
+  openai@6.18.0:
+    resolution: {integrity: sha512-odLRYyz9rlzz6g8gKn61RM2oP5UUm428sE2zOxZqS9MzVfD5/XW8UoEjpnRkzTuScXP7ZbP/m7fC+bl8jCOZZw==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -833,8 +833,8 @@ packages:
   safe-buffer@5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
 
-  semver@7.7.3:
-    resolution: {integrity: sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==}
+  semver@7.7.4:
+    resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -1086,7 +1086,7 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/e907a9a7128beb06d5842507da04f37dab96cc23': {}
+  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/13681fadce4b628e35b9d606539aa0a7bbc5c7dd': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -1225,7 +1225,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.54.0
       debug: 4.4.3(supports-color@8.1.1)
       minimatch: 9.0.5
-      semver: 7.7.3
+      semver: 7.7.4
       tinyglobby: 0.2.15
       ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
@@ -1626,12 +1626,12 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9(@google/genai@1.40.0)(openai@6.17.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5146822ba6150828a1c34b2139a92dc973223fc9(@google/genai@1.40.0)(openai@6.18.0(ws@8.19.0)):
     dependencies:
       '@google/genai': 1.40.0
       arktype: 2.1.29
       json5: 2.2.3
-      openai: 6.17.0(ws@8.19.0)
+      openai: 6.18.0(ws@8.19.0)
       smol-toml: 1.6.0
 
   locate-path@6.0.0:
@@ -1714,7 +1714,7 @@ snapshots:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
 
-  openai@6.17.0(ws@8.19.0):
+  openai@6.18.0(ws@8.19.0):
     optionalDependencies:
       ws: 8.19.0
 
@@ -1801,7 +1801,7 @@ snapshots:
 
   safe-buffer@5.2.1: {}
 
-  semver@7.7.3: {}
+  semver@7.7.4: {}
 
   serialize-javascript@6.0.2:
     dependencies:
