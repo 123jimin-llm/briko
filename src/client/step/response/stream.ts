@@ -1,6 +1,6 @@
 import { createAsyncChannel, pipeToAsyncSink } from "@jiminp/tooltool";
 
-import type { StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult } from "llm-msg-io";
+import type { StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult, ToolCall } from "llm-msg-io";
 import { messageContentToText, stepResultPromiseToEvents } from "llm-msg-io";
 
 import type { StepResponse } from "./type.ts";
@@ -50,6 +50,11 @@ export function createStepResponse<DecodedType extends StepResult = StepResult>(
         async text() {
             const messages = await response.messages();
             return messages.map((message) => messageContentToText(message.content)).join('\n');
+        },
+
+        async toolCalls() {
+            const messages = await response.messages();
+            return messages.flatMap((message): ToolCall[] => message.tool_calls ?? []);
         },
 
         async result() {

@@ -1,4 +1,4 @@
-import type { Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType } from "llm-msg-io";
+import type { Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType, ToolCall } from "llm-msg-io";
 import type { StepStreamEventHandler } from "./handler.ts";
 import type { AsyncChannel } from "@jiminp/tooltool";
 
@@ -19,6 +19,9 @@ export interface StepResponse<DecodedType extends StepResult = StepResult> {
 
     /** Get the text representation of this response. */
     text(): Promise<string>;
+
+    /** Get all tool calls from this response. */
+    toolCalls(): Promise<ToolCall[]>;
 
     /** Get the result of this response. */
     result(): Promise<DecodedType>;
