@@ -7,10 +7,12 @@ const config = tseslint.config([
     {
         ignores: ["dist/**"],
     },
-    eslint.configs.recommended,
-    tseslint.configs.strict,
     {
-        files: ["src/**/*.{ts}"],
+        files: ["src/**/*.ts"],
+        extends: [
+            eslint.configs.recommended,
+            ...tseslint.configs.strict,
+        ],
     },
 ]);
 
