@@ -1,6 +1,6 @@
-import { MessageArray } from "llm-msg-io";
-import type { History } from "./type.js";
-import type { ContextWindowConstraint } from "../type.js";
+import {MessageArray} from "llm-msg-io";
+import type {History} from "./type.js";
+import type {ContextWindowConstraint} from "../type.js";
 
 export class LinearHistory implements History {
     /** The list of messages in the history. */
@@ -16,13 +16,12 @@ export class LinearHistory implements History {
     async toMessageArray(constraint?: ContextWindowConstraint): Promise<MessageArray> {
         if(!constraint) return this.history;
 
-        const { measure, max_tokens } = constraint;
+        const {measure, max_tokens} = constraint;
 
         let total_tokens = 0;
         let end_index = this.history.length;
 
         for(let i = this.history.length - 1; i >= 0; --i) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const message = this.history[i]!;
             const message_tokens = await measure.getNumTokens([message]);
             total_tokens += message_tokens;

@@ -1,5 +1,5 @@
-import { MessageArray } from "llm-msg-io";
-import type { History } from "./type.js";
+import {MessageArray} from "llm-msg-io";
+import type {History} from "./type.js";
 
 /** A half-open interval. */
 export interface TreeHistorySpan {
@@ -24,13 +24,13 @@ export class TreeHistory implements History {
         this.history = history?.length ? [...history] : [];
         this.children = this.history.map((msg, i): TreeHistoryNode => {
             return {
-                span: { start: i, end: i + 1 },
+                span: {start: i, end: i + 1},
                 summary: [msg],
                 children: [],
             };
         });
     }
-   
+
     async push(): Promise<void> {
         throw new Error("Method not implemented.");
     }

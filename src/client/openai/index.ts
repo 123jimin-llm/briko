@@ -1,20 +1,20 @@
 /**
  * A client module for OpenAI and OpenAI-compatible LLM API providers.
- * 
+ *
  * @module
  */
 
-import { recursiveMerge } from "@jiminp/tooltool";
+import {recursiveMerge, unreachable} from "@jiminp/tooltool";
 
-import OpenAI, { type ClientOptions } from "openai";
-import type { ReasoningEffort } from "openai/resources";
-import type { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions.mjs";
+import OpenAI, {type ClientOptions} from "openai";
+import type {ReasoningEffort} from "openai/resources";
+import type {ChatCompletionCreateParamsBase} from "openai/resources/chat/completions.mjs";
 
 import {createStepEncoder, createStepStreamDecoder, createStepDecoder, OpenAIChatCodec} from "llm-msg-io";
 
-import type { StepResponse, SamplingReasoningEffort, StepRequest } from "../step/index.ts";
-import { createStepResponse } from "../step/index.ts";
-import type { LLMClient, LLMEndpointParams } from "../type.js";
+import type {StepResponse, SamplingReasoningEffort, StepRequest} from "../step/index.ts";
+import {createStepResponse} from "../step/index.ts";
+import type {LLMClient, LLMEndpointParams} from "../type.js";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;
 
@@ -51,7 +51,7 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
                 const decoder = createStepDecoder(OpenAIChatCodec);
                 return createStepResponse(client.chat.completions.create({...api_req, stream: false}).then(decoder));
             }
-        }
+        },
     };
 }
 
@@ -62,6 +62,7 @@ export function getOpenAIReasoningEffort(effort: SamplingReasoningEffort): Reaso
         case 'medium': return 'medium';
         case 'high': return 'high';
         case 'xhigh': return 'xhigh';
+        default: return unreachable(effort);
     }
 }
 

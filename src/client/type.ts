@@ -1,7 +1,7 @@
-import { type } from "arktype";
+import {type} from "arktype";
 
-import { exportType } from "../util/type.ts";
-import type { StepClient } from "./step/index.ts";
+import {exportType} from "../util/type.ts";
+import type {StepClient} from "./step/index.ts";
 
 export const LLMAPIType = exportType(type("'openai'|'gemini'"));
 export type LLMAPIType = typeof LLMAPIType.infer;

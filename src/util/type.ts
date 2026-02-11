@@ -1,4 +1,4 @@
-import type { Type, Out } from 'arktype';
+import type {Type, Out} from 'arktype';
 
 declare const __public: unique symbol;
 

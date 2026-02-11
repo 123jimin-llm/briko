@@ -1,6 +1,6 @@
-import type { Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType, ToolCall } from "llm-msg-io";
-import type { StepStreamEventHandler } from "./handler.ts";
-import type { AsyncChannel } from "@jiminp/tooltool";
+import type {Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType, ToolCall} from "llm-msg-io";
+import type {StepStreamEventHandler} from "./handler.ts";
+import type {AsyncChannel} from "@jiminp/tooltool";
 
 export interface StepResponse<DecodedType extends StepResult = StepResult> {
     /** Whether this response is being streamed. */

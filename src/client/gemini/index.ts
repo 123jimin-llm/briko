@@ -1,19 +1,19 @@
 /**
  * A client module for Gemini API.
- * 
+ *
  * @module
  */
 
-import { recursiveMerge } from "@jiminp/tooltool";
+import {recursiveMerge, unreachable} from "@jiminp/tooltool";
 
-import type { GenerateContentConfig, GenerateContentParameters, GoogleGenAIOptions, ThinkingConfig } from "@google/genai";
-import { GoogleGenAI, ThinkingLevel } from "@google/genai";
+import type {GenerateContentConfig, GenerateContentParameters, GoogleGenAIOptions, ThinkingConfig} from "@google/genai";
+import {GoogleGenAI, ThinkingLevel} from "@google/genai";
 
-import { createStepDecoder, createStepEncoder, createStepStreamDecoder, GeminiGenerateContentCodec } from "llm-msg-io";
+import {createStepDecoder, createStepEncoder, createStepStreamDecoder, GeminiGenerateContentCodec} from "llm-msg-io";
 
-import type { StepResponse, SamplingReasoningEffort, StepRequest } from "../step/index.ts";
-import { createStepResponse } from "../step/index.ts";
-import type { LLMClient, LLMEndpointParams } from "../type.js";
+import type {StepResponse, SamplingReasoningEffort, StepRequest} from "../step/index.ts";
+import {createStepResponse} from "../step/index.ts";
+import type {LLMClient, LLMEndpointParams} from "../type.js";
 
 export type GeminiExtraStepParams = Partial<GenerateContentParameters>;
 
@@ -33,14 +33,14 @@ export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<
     const client = createRawGeminiClient(params);
 
     return {
-        step(req: StepRequest<GeminiExtraStepParams>, stream: boolean = false): StepResponse {            
+        step(req: StepRequest<GeminiExtraStepParams>, stream: boolean = false): StepResponse {
             const encoder = createStepEncoder(GeminiGenerateContentCodec);
             let api_req: GenerateContentParameters = encoder(req);
             api_req = recursiveMerge(
                 api_req as unknown as Record<string, unknown>,
                 createGeminiGenerateContentParams(req),
             ) as unknown as GenerateContentParameters;
-            
+
             if(stream) {
                 const decoder = createStepStreamDecoder(GeminiGenerateContentCodec);
                 return createStepResponse(decoder(client.models.generateContentStream(api_req)));
@@ -48,7 +48,7 @@ export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<
                 const decoder = createStepDecoder(GeminiGenerateContentCodec);
                 return createStepResponse(client.models.generateContent(api_req).then(decoder));
             }
-        }
+        },
     };
 }
 
@@ -59,6 +59,7 @@ export function getGeminiThinkingLevel(effort: SamplingReasoningEffort): Thinkin
         case 'medium': return ThinkingLevel.MEDIUM;
         case 'high': return ThinkingLevel.HIGH;
         case 'xhigh': return ThinkingLevel.HIGH;
+        default: return unreachable(effort);
     }
 }
 

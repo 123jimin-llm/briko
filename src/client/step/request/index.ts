@@ -1,8 +1,8 @@
 export * from "./type.ts";
 
-import { asMessageArray, MessageArray, type MessageArrayLike } from "llm-msg-io";
-import type { StepRequest, StepRequestParams } from "./type.ts";
-import { applyTransforms } from "@jiminp/tooltool";
+import {asMessageArray, MessageArray, type MessageArrayLike} from "llm-msg-io";
+import type {StepRequest, StepRequestParams} from "./type.ts";
+import {applyTransforms} from "@jiminp/tooltool";
 
 /** Creates a `StepRequest` based on messages. */
 export function createStepRequest<ExtraParams extends object = object>(
@@ -30,7 +30,7 @@ export function createStepRequest<ExtraParams extends object = object>(
             messages: param0,
             use(...transforms) {
                 return applyTransforms(this, transforms);
-            }
+            },
         };
         extra_params = (param1 as ExtraParams|undefined) ?? null;
     } else {
@@ -39,7 +39,7 @@ export function createStepRequest<ExtraParams extends object = object>(
             messages: asMessageArray(param1 as MessageArrayLike),
             use(...transforms) {
                 return applyTransforms(this, transforms);
-            }
+            },
         };
         extra_params = param2 ?? null;
     }

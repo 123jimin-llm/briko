@@ -1,8 +1,8 @@
-import { type } from "arktype";
-import type { MessageArray } from "llm-msg-io";
+import {type} from "arktype";
+import type {MessageArray} from "llm-msg-io";
 
-import type { NestedArray, TransformFunction } from "@jiminp/tooltool";
-import { exportType } from "../../../util/type.ts";
+import type {NestedArray, TransformFunction} from "@jiminp/tooltool";
+import {exportType} from "../../../util/type.ts";
 
 /** Parameters for specifying a specific LLM model. */
 export const ModelParams = exportType(type({
@@ -31,17 +31,17 @@ export const SamplingParams = exportType(type({
 
     /** \# of top tokens to consider. */
     top_k: "number",
-    
+
     /** Minimal probability for a token, relative to the most likely token. */
     min_p: "number",
-    
+
     /** Top P, relative to the most likely token. */
     top_a: "number",
     seed: type("string|number").pipe((v) => `${v}`),
-    
+
     /** Max \# of tokens to include in output. */
     max_tokens: "number",
-    
+
     reasoning: InternalSamplingReasoningParams.partial(),
 }));
 export type SamplingParams = typeof SamplingParams.infer;

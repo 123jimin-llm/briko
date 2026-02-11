@@ -1,4 +1,4 @@
-import type { MessageArray } from "llm-msg-io";
+import type {MessageArray} from "llm-msg-io";
 
 export interface ContextWindowMeasure {
     /** A unique identifier for the measurer being used. */
@@ -16,7 +16,7 @@ export interface ContextWindowConstraint {
 export interface Context {
     /**
      * Retrieves the list of messages represented by this context.
-     * 
+     *
      * The constraint is used to determine the maximum number of tokens to include.
      * It is advised to return `messages` such that `constraint.measure(messages) <= constraint.max_tokens`, but it's not mandatory.
      */

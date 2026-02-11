@@ -1,4 +1,4 @@
-import type { StepStreamEvent, StepStreamEventType } from "llm-msg-io";
+import type {StepStreamEvent, StepStreamEventType} from "llm-msg-io";
 
 export type StepStreamEventHandler<K extends StepStreamEventType> = (event: Extract<StepStreamEvent, {type: K}>) => void;
 
@@ -9,7 +9,7 @@ export type StepStreamEventHandlersRecord = {
 export function addStepStreamEventHandler<K extends StepStreamEventType>(
     record: StepStreamEventHandlersRecord,
     type: K,
-    handler: StepStreamEventHandler<K>
+    handler: StepStreamEventHandler<K>,
 ) {
     const handlers: Array<StepStreamEventHandler<K>> = (record[type] ??= []);
     handlers.push(handler);

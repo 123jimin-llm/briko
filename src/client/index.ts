@@ -1,6 +1,6 @@
 /**
  * The `client` module provides an easy-to-use API wrapper for using LLMs.
- * 
+ *
  * - **Client**
  * @module
  */

@@ -1,15 +1,15 @@
-import { createAsyncChannel, pipeToAsyncSink } from "@jiminp/tooltool";
+import {createAsyncChannel, pipeToAsyncSink} from "@jiminp/tooltool";
 
-import type { StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult, ToolCall } from "llm-msg-io";
-import { messageContentToText, stepResultPromiseToEvents } from "llm-msg-io";
+import type {StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult, ToolCall} from "llm-msg-io";
+import {messageContentToText, stepResultPromiseToEvents} from "llm-msg-io";
 
-import type { StepResponse } from "./type.ts";
-import type { StepStreamEventHandler, StepStreamEventHandlersRecord } from "./handler.ts";
-import { addStepStreamEventHandler, invokeStepStreamEventHandlers } from "./handler.ts";
+import type {StepResponse} from "./type.ts";
+import type {StepStreamEventHandler, StepStreamEventHandlersRecord} from "./handler.ts";
+import {addStepStreamEventHandler, invokeStepStreamEventHandlers} from "./handler.ts";
 
 export function createStepResponse<DecodedType extends StepResult = StepResult>(event_generator: Promise<DecodedType>|StepStreamEventGenerator<DecodedType>): StepResponse<DecodedType> {
     let is_stream: boolean = true;
-    
+
     if(event_generator instanceof Promise) {
         is_stream = false;
         event_generator = stepResultPromiseToEvents(event_generator);
@@ -18,8 +18,8 @@ export function createStepResponse<DecodedType extends StepResult = StepResult>(
     const handlers: StepStreamEventHandlersRecord = {};
     const events = createAsyncChannel<StepStreamEvent, DecodedType>();
 
-    void (async() => {
-        for await(const event of events) {
+    void (async () => {
+        for await (const event of events) {
             invokeStepStreamEventHandlers(handlers, event);
         }
     })();
