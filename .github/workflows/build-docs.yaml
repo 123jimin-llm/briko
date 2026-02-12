@@ -34,7 +34,7 @@ jobs:
       - name: Build Docs
         run: pnpm build-docs
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./docs
   deploy:
