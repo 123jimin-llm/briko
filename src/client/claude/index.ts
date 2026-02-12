@@ -56,6 +56,7 @@ export function getClaudeThinkingConfig(req_reasoning: NonNullable<StepRequest['
 }
 
 function getClaudeDefaultBudgetTokens(effort: SamplingReasoningEffort): number {
+    // No specific reason behind these values; min. 1024 and quality improvement tapers off above 32k.
     switch(effort) {
         case 'minimal': return 1024;
         case 'low': return 2048;
