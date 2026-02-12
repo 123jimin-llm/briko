@@ -10,10 +10,10 @@ import OpenAI, {type ClientOptions} from "openai";
 import type {ReasoningEffort} from "openai/resources";
 import type {ChatCompletionCreateParamsBase} from "openai/resources/chat/completions.mjs";
 
-import {createStepEncoder, createStepStreamDecoder, createStepDecoder, OpenAIChatCodec} from "llm-msg-io";
+import {OpenAIChatCodec} from "llm-msg-io";
 
-import type {StepResponse, SamplingReasoningEffort, StepRequest} from "../step/index.ts";
-import {createStepResponse} from "../step/index.ts";
+import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
+import {createCodecClient} from "../codec-client.ts";
 import type {LLMClient, LLMEndpointParams} from "../type.js";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;
@@ -35,24 +35,11 @@ export function createRawOpenAIClient(params: CreateOpenAIClientParams): OpenAI 
 export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<OpenAIExtraStepParams> {
     const client = createRawOpenAIClient(params);
 
-    return {
-        step(req: StepRequest<OpenAIExtraStepParams>, stream: boolean = false): StepResponse {
-            const encoder = createStepEncoder(OpenAIChatCodec);
-            let api_req = encoder(req);
-            api_req = recursiveMerge(
-                api_req as unknown as Record<string, unknown>,
-                createOpenAIChatCompletionParams(req),
-            ) as unknown as typeof api_req;
-
-            if(stream) {
-                const decoder = createStepStreamDecoder(OpenAIChatCodec);
-                return createStepResponse(decoder(client.chat.completions.create({...api_req, stream: true})));
-            } else {
-                const decoder = createStepDecoder(OpenAIChatCodec);
-                return createStepResponse(client.chat.completions.create({...api_req, stream: false}).then(decoder));
-            }
-        },
-    };
+    return createCodecClient(OpenAIChatCodec, {
+        createExtraParams: (req) => createOpenAIChatCompletionParams(req),
+        call: (api_req) => client.chat.completions.create({...api_req, stream: false}),
+        callStream: (api_req) => client.chat.completions.create({...api_req, stream: true}),
+    });
 }
 
 export function getOpenAIReasoningEffort(effort: SamplingReasoningEffort): ReasoningEffort {

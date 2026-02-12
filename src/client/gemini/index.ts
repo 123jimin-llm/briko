@@ -9,10 +9,10 @@ import {recursiveMerge, unreachable} from "@jiminp/tooltool";
 import type {GenerateContentConfig, GenerateContentParameters, GoogleGenAIOptions, ThinkingConfig} from "@google/genai";
 import {GoogleGenAI, ThinkingLevel} from "@google/genai";
 
-import {createStepDecoder, createStepEncoder, createStepStreamDecoder, GeminiGenerateContentCodec} from "llm-msg-io";
+import {GeminiGenerateContentCodec} from "llm-msg-io";
 
-import type {StepResponse, SamplingReasoningEffort, StepRequest} from "../step/index.ts";
-import {createStepResponse} from "../step/index.ts";
+import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
+import {createCodecClient} from "../codec-client.ts";
 import type {LLMClient, LLMEndpointParams} from "../type.js";
 
 export type GeminiExtraStepParams = Partial<GenerateContentParameters>;
@@ -32,24 +32,11 @@ export function createRawGeminiClient(params: CreateGeminiClientParams): GoogleG
 export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<GeminiExtraStepParams> {
     const client = createRawGeminiClient(params);
 
-    return {
-        step(req: StepRequest<GeminiExtraStepParams>, stream: boolean = false): StepResponse {
-            const encoder = createStepEncoder(GeminiGenerateContentCodec);
-            let api_req: GenerateContentParameters = encoder(req);
-            api_req = recursiveMerge(
-                api_req as unknown as Record<string, unknown>,
-                createGeminiGenerateContentParams(req),
-            ) as unknown as GenerateContentParameters;
-
-            if(stream) {
-                const decoder = createStepStreamDecoder(GeminiGenerateContentCodec);
-                return createStepResponse(decoder(client.models.generateContentStream(api_req)));
-            } else {
-                const decoder = createStepDecoder(GeminiGenerateContentCodec);
-                return createStepResponse(client.models.generateContent(api_req).then(decoder));
-            }
-        },
-    };
+    return createCodecClient(GeminiGenerateContentCodec, {
+        createExtraParams: (req) => createGeminiGenerateContentParams(req),
+        call: (api_req) => client.models.generateContent(api_req),
+        callStream: (api_req) => client.models.generateContentStream(api_req),
+    });
 }
 
 export function getGeminiThinkingLevel(effort: SamplingReasoningEffort): ThinkingLevel {
