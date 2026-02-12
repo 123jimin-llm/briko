@@ -19,7 +19,7 @@ const InternalSamplingReasoningParams = type({
     max_tokens: "number",
 
     /** Whether to omit reasoning from response. Currently only supported by Gemini. */
-    omit_reasoning_from_response: "boolean",
+    omit_from_response: "boolean",
 });
 export const SamplingReasoningParams = exportType(InternalSamplingReasoningParams);
 export type SamplingReasoningParams = typeof SamplingReasoningParams.infer;

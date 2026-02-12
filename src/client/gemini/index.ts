@@ -75,7 +75,7 @@ export function createGeminiGenerateContentParams(req: StepRequest<GeminiExtraSt
     if(req.reasoning != null) {
         const reasoning = req.reasoning;
         const api_reasoning: ThinkingConfig = {
-            includeThoughts: reasoning.omit_reasoning_from_response ? false : true,
+            includeThoughts: reasoning.omit_from_response ? false : true,
         };
 
         if(reasoning.max_tokens != null && reasoning.max_tokens >= 0) {
