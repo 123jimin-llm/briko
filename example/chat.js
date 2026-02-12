@@ -1,9 +1,9 @@
-//@ts-check
+// @ts-check
 
 import * as readline from "node:readline/promises";
-import { stdin, stdout } from "node:process";
+import {stdin, stdout} from "node:process";
 
-import { createOpenAIClient, LinearHistory } from "../dist/index.js";
+import {createOpenAIClient, LinearHistory} from "../dist/index.js";
 
 async function main() {
     const rl = readline.createInterface({input: stdin, output: stdout});
@@ -28,7 +28,7 @@ async function main() {
 
         const messages = await history.toMessageArray();
 
-        for await(const delta of createOpenAIChatCompletion(llm, messages)) {
+        for await (const delta of createOpenAIChatCompletion(llm, messages)) {
             console.log(delta);
         }
 
