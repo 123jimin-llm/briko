@@ -10,3 +10,4 @@ export * from "./codec-client.ts";
 export * from "./step/index.ts";
 export * from "./openai/index.ts";
 export * from "./gemini/index.ts";
+export * from "./claude/index.ts";
