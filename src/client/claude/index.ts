@@ -88,8 +88,8 @@ export function createClaudeMessageParams(req: StepRequest<ClaudeExtraStepParams
     if(req.reasoning != null) {
         params.thinking = getClaudeThinkingConfig(req.reasoning);
 
-        if(params.thinking?.type === 'enabled' && params.max_tokens < params.thinking.budget_tokens) {
-            params.max_tokens = params.thinking.budget_tokens;
+        if(params.thinking?.type === 'enabled' && params.max_tokens <= params.thinking.budget_tokens) {
+            params.max_tokens = params.thinking.budget_tokens + 1;
         }
     }
 
