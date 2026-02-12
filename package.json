@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A collection of utilities for managing LLM context and executor.",
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -36,32 +37,37 @@
   },
   "homepage": "https://github.com/123jimin-llm/briko",
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "@jiminp/eslint-config": "^1.1.0",
     "@stylistic/eslint-plugin": "^5.8.0",
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.2.1",
+    "@types/node": "^25.2.3",
     "chai": "^6.2.2",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "mocha": "^11.7.5",
     "rimraf": "^6.1.2",
     "typedoc": "^0.28.16",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.55.0"
   },
   "dependencies": {
-    "@google/genai": "^1.40.0",
+    "@google/genai": "^1.41.0",
     "@jiminp/tooltool": "github:123jimin/tooltool",
     "arktype": "^2.1.29",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
-    "openai": "^6.18.0"
+    "openai": "^6.21.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "@jiminp/tooltool",
       "llm-msg-io",
       "protobufjs"
-    ]
+    ],
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint": ">=10"
+      }
+    }
   }
 }
