@@ -44,6 +44,7 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
 
 export function getOpenAIReasoningEffort(effort: SamplingReasoningEffort): ReasoningEffort {
     switch(effort) {
+        case 'auto': return 'none';
         case 'minimal': return 'minimal';
         case 'low': return 'low';
         case 'medium': return 'medium';
@@ -64,8 +65,10 @@ export function createOpenAIChatCompletionParams(req: StepRequest<OpenAIExtraSte
         const parsed = parseInt(req.seed, 10);
         if(!Number.isNaN(parsed)) params.seed = parsed;
     }
-    if(req.max_tokens != null) params.max_completion_tokens = req.max_tokens;
-    if(req.reasoning?.effort != null) {
+
+    if(req.max_tokens != null && req.max_tokens >= 0) {
+        params.max_completion_tokens = req.max_tokens;
+    } else if(req.reasoning?.effort != null && req.reasoning.effort !== 'auto') {
         params.reasoning_effort = getOpenAIReasoningEffort(req.reasoning.effort);
     }
 

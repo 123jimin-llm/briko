@@ -22,7 +22,7 @@ export function createStepRequest<ExtraParams extends object = object>(
     param1: MessageArrayLike|ExtraParams|undefined,
     param2?: ExtraParams,
 ): StepRequest<ExtraParams> {
-    let extra_params: ExtraParams|null = null;
+    let extra_params: ExtraParams|null;
     let req: StepRequest<ExtraParams>;
 
     if(Array.isArray(param0)) {

@@ -10,14 +10,16 @@ export const ModelParams = exportType(type({
 }));
 export type ModelParams = typeof ModelParams.infer;
 
-export const SamplingReasoningEffort = exportType(type("'minimal'|'low'|'medium'|'high'|'xhigh'"));
+export const SamplingReasoningEffort = exportType(type("'auto'|'minimal'|'low'|'medium'|'high'|'xhigh'"));
 export type SamplingReasoningEffort = typeof SamplingReasoningEffort.infer;
 
 /** Parameters for reasoning efforts. */
 const InternalSamplingReasoningParams = type({
     effort: SamplingReasoningEffort,
     max_tokens: "number",
-    exclude: "boolean",
+
+    /** Whether to omit reasoning from response. Currently only supported by Gemini. */
+    omit_reasoning_from_response: "boolean",
 });
 export const SamplingReasoningParams = exportType(InternalSamplingReasoningParams);
 export type SamplingReasoningParams = typeof SamplingReasoningParams.infer;

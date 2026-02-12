@@ -41,6 +41,7 @@ export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<
 
 export function getGeminiThinkingLevel(effort: SamplingReasoningEffort): ThinkingLevel {
     switch(effort) {
+        case 'auto': return ThinkingLevel.THINKING_LEVEL_UNSPECIFIED;
         case 'minimal': return ThinkingLevel.MINIMAL;
         case 'low': return ThinkingLevel.LOW;
         case 'medium': return ThinkingLevel.MEDIUM;
@@ -74,10 +75,12 @@ export function createGeminiGenerateContentParams(req: StepRequest<GeminiExtraSt
     if(req.reasoning != null) {
         const reasoning = req.reasoning;
         const api_reasoning: ThinkingConfig = {
-            includeThoughts: reasoning.exclude ? false : true,
+            includeThoughts: reasoning.omit_reasoning_from_response ? false : true,
         };
 
-        if(reasoning.effort != null) {
+        if(reasoning.max_tokens != null && reasoning.max_tokens >= 0) {
+            api_reasoning.thinkingBudget = reasoning.max_tokens;
+        } else if(reasoning.effort != null) {
             api_reasoning.thinkingLevel = getGeminiThinkingLevel(reasoning.effort);
         }
 

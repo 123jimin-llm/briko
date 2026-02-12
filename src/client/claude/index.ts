@@ -4,7 +4,7 @@
  * @module
  */
 
-import {recursiveMerge, unreachable} from "@jiminp/tooltool";
+import {recursiveMerge, unreachable, type Nullable} from "@jiminp/tooltool";
 
 import Anthropic, {type ClientOptions} from "@anthropic-ai/sdk";
 import type {MessageCreateParamsNonStreaming, ThinkingConfigParam} from "@anthropic-ai/sdk/resources/messages";
@@ -41,23 +41,31 @@ export function createClaudeClient(params: CreateClaudeClientParams): LLMClient<
     });
 }
 
-export function getClaudeThinkingConfig(req_reasoning: NonNullable<StepRequest['reasoning']>): ThinkingConfigParam {
-    if(req_reasoning.effort != null) {
-        const effort = req_reasoning.effort;
-        const budget_tokens = req_reasoning.max_tokens ?? getClaudeDefaultBudgetTokens(effort);
+export function getClaudeThinkingConfig(req_reasoning: Nullable<StepRequest['reasoning']>): ThinkingConfigParam {
+    if(req_reasoning == null) return {type: 'disabled'};
+
+    const {max_tokens, effort} = req_reasoning;
+
+    if(max_tokens != null && max_tokens >= 0) {
+        return {type: 'enabled', budget_tokens: max_tokens >= 1024 ? max_tokens : 1024};
+    }
+
+    if(effort != null) {
+        if(effort === 'auto') {
+            return {type: 'adaptive'};
+        }
+
+        const budget_tokens = getClaudeDefaultBudgetTokens(effort);
         return {type: 'enabled', budget_tokens};
     }
 
-    if(req_reasoning.max_tokens != null) {
-        return {type: 'enabled', budget_tokens: req_reasoning.max_tokens};
-    }
-
-    return {type: 'enabled', budget_tokens: 10240};
+    return {type: 'disabled'};
 }
 
 function getClaudeDefaultBudgetTokens(effort: SamplingReasoningEffort): number {
     // No specific reason behind these values; min. 1024 and quality improvement tapers off above 32k.
     switch(effort) {
+        case 'auto': return 0;
         case 'minimal': return 1024;
         case 'low': return 2048;
         case 'medium': return 10240;
@@ -79,6 +87,10 @@ export function createClaudeMessageParams(req: StepRequest<ClaudeExtraStepParams
 
     if(req.reasoning != null) {
         params.thinking = getClaudeThinkingConfig(req.reasoning);
+
+        if(params.thinking?.type === 'enabled' && params.max_tokens < params.thinking.budget_tokens) {
+            params.max_tokens = params.thinking.budget_tokens;
+        }
     }
 
     return recursiveMerge(params, req.extra_params);
