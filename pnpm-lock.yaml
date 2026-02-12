@@ -15,14 +15,14 @@ importers:
         specifier: ^1.41.0
         version: 1.41.0
       '@jiminp/tooltool':
-        specifier: github:123jimin/tooltool
-        version: https://codeload.github.com/123jimin/tooltool/tar.gz/556d061229b1c43ba3c100e3c9dd1244ebd56764
+        specifier: ^0.3.1
+        version: 0.3.1
       arktype:
         specifier: ^2.1.29
         version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/3d8466458cc97cab59938d7ebc50a214197924a1(@anthropic-ai/sdk@0.74.0)(@google/genai@1.41.0)(openai@6.21.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/d19ad233ac1cf788f2417d3e46370028fcf7e917(@anthropic-ai/sdk@0.74.0)(@google/genai@1.41.0)(openai@6.21.0(ws@8.19.0))
       openai:
         specifier: ^6.21.0
         version: 6.21.0(ws@8.19.0)
@@ -181,9 +181,8 @@ packages:
       typescript-eslint:
         optional: true
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/556d061229b1c43ba3c100e3c9dd1244ebd56764':
-    resolution: {tarball: https://codeload.github.com/123jimin/tooltool/tar.gz/556d061229b1c43ba3c100e3c9dd1244ebd56764}
-    version: 0.3.1
+  '@jiminp/tooltool@0.3.1':
+    resolution: {integrity: sha512-oL0MNwII0Ms4dluAO3XS49oMnwYimrV/NaQqDNyux/+orJehfEj1M2bkktGQOBtJleIiZkzO4OCgCTthOHDwgg==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -707,8 +706,8 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/3d8466458cc97cab59938d7ebc50a214197924a1:
-    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/3d8466458cc97cab59938d7ebc50a214197924a1}
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/d19ad233ac1cf788f2417d3e46370028fcf7e917:
+    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/d19ad233ac1cf788f2417d3e46370028fcf7e917}
     version: 0.2.0
     peerDependencies:
       '@anthropic-ai/sdk': ^0.74.0
@@ -1127,7 +1126,7 @@ snapshots:
       '@stylistic/eslint-plugin': 5.8.0(eslint@10.0.0)
       typescript-eslint: 8.55.0(eslint@10.0.0)(typescript@5.9.3)
 
-  '@jiminp/tooltool@https://codeload.github.com/123jimin/tooltool/tar.gz/556d061229b1c43ba3c100e3c9dd1244ebd56764': {}
+  '@jiminp/tooltool@0.3.1': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -1676,7 +1675,7 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/3d8466458cc97cab59938d7ebc50a214197924a1(@anthropic-ai/sdk@0.74.0)(@google/genai@1.41.0)(openai@6.21.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/d19ad233ac1cf788f2417d3e46370028fcf7e917(@anthropic-ai/sdk@0.74.0)(@google/genai@1.41.0)(openai@6.21.0(ws@8.19.0)):
     dependencies:
       '@anthropic-ai/sdk': 0.74.0
       '@google/genai': 1.41.0
