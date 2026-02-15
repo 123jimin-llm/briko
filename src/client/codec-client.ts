@@ -81,14 +81,14 @@ function isArkTypeSchema(response_type: ResponseTypeLike): response_type is Type
 function toResponseSchema(response_type: ResponseTypeLike): ResponseSchema {
     if(isArkTypeSchema(response_type)) {
         return {
-            schema: response_type.toJsonSchema(),
+            schema: response_type.in.toJsonSchema(),
             strict: true,
         };
     } else {
         return {
             strict: true,
             ...response_type,
-            schema: response_type.schema.toJsonSchema(),
+            schema: response_type.schema.in.toJsonSchema(),
         };
     }
 }
