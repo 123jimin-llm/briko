@@ -38,7 +38,7 @@
   "homepage": "https://github.com/123jimin-llm/briko",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@jiminp/eslint-config": "^1.1.0",
+    "@jiminp/eslint-config": "^1.1.1",
     "@stylistic/eslint-plugin": "^5.8.0",
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
@@ -47,7 +47,7 @@
     "eslint": "^10.0.0",
     "mocha": "^11.7.5",
     "rimraf": "^6.1.2",
-    "typedoc": "^0.28.16",
+    "typedoc": "^0.28.17",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.55.0"
   },
@@ -57,7 +57,7 @@
     "@jiminp/tooltool": "^0.3.1",
     "arktype": "^2.1.29",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
-    "openai": "^6.21.0"
+    "openai": "^6.22.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
