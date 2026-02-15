@@ -3,12 +3,14 @@ import {createAsyncChannel, pipeToAsyncSink, type JSONValue} from "@jiminp/toolt
 import type {StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult, ToolCall} from "llm-msg-io";
 import {messageContentToText, stepResultPromiseToEvents} from "llm-msg-io";
 
-import type {StepResponse, StructuredStepResponse} from "./type.ts";
+import type {StepResponse, StepResponseCore, StructuredStepResponse} from "./type.ts";
 import type {StepStreamEventHandler, StepStreamEventHandlersRecord} from "./handler.ts";
 import {addStepStreamEventHandler, invokeStepStreamEventHandlers} from "./handler.ts";
 import type {Type} from "arktype";
 
-export function createStepResponse<DecodedType extends StepResult = StepResult>(event_generator: Promise<DecodedType>|StepStreamEventGenerator<DecodedType>): StepResponse<DecodedType> {
+export function createStepResponseCore<DecodedType extends StepResult = StepResult>(
+    event_generator: Promise<DecodedType> | StepStreamEventGenerator<DecodedType>,
+): StepResponseCore<DecodedType> {
     let is_stream: boolean = true;
 
     if(event_generator instanceof Promise) {
@@ -16,20 +18,32 @@ export function createStepResponse<DecodedType extends StepResult = StepResult>(
         event_generator = stepResultPromiseToEvents(event_generator);
     }
 
-    const handlers: StepStreamEventHandlersRecord = {};
     const events = createAsyncChannel<StepStreamEvent, DecodedType>();
+    pipeToAsyncSink(event_generator, events);
+
+    return {
+        is_stream,
+        events,
+        async result() {
+            return await events.result();
+        },
+    };
+}
+
+export function createStepResponse<DecodedType extends StepResult = StepResult>(
+    event_generator: Promise<DecodedType> | StepStreamEventGenerator<DecodedType>,
+): StepResponse<DecodedType> {
+    const core = createStepResponseCore(event_generator);
+    const handlers: StepStreamEventHandlersRecord = {};
 
     void (async () => {
-        for await (const event of events) {
+        for await (const event of core.events) {
             invokeStepStreamEventHandlers(handlers, event);
         }
     })();
 
-    pipeToAsyncSink(event_generator, events);
-
     const response: StepResponse<DecodedType> = {
-        is_stream,
-        events,
+        ...core,
 
         on<T extends StepStreamEventType>(type: T, handler: StepStreamEventHandler<T>) {
             addStepStreamEventHandler(handlers, type, handler);
@@ -58,12 +72,13 @@ export function createStepResponse<DecodedType extends StepResult = StepResult>(
             return messages.flatMap((message): ToolCall[] => message.tool_calls ?? []);
         },
 
-        async result() {
-            return await events.result();
+        async tokenUsage() {
+            const result = await response.result();
+            return result.token_usage ?? null;
         },
 
         async done() {
-            return await events.result();
+            return await response.result();
         },
     };
 
