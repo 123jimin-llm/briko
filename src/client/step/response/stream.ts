@@ -1,11 +1,12 @@
-import {createAsyncChannel, pipeToAsyncSink} from "@jiminp/tooltool";
+import {createAsyncChannel, pipeToAsyncSink, type JSONValue} from "@jiminp/tooltool";
 
 import type {StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult, ToolCall} from "llm-msg-io";
 import {messageContentToText, stepResultPromiseToEvents} from "llm-msg-io";
 
-import type {StepResponse} from "./type.ts";
+import type {StepResponse, StructuredStepResponse} from "./type.ts";
 import type {StepStreamEventHandler, StepStreamEventHandlersRecord} from "./handler.ts";
 import {addStepStreamEventHandler, invokeStepStreamEventHandlers} from "./handler.ts";
+import type {Type} from "arktype";
 
 export function createStepResponse<DecodedType extends StepResult = StepResult>(event_generator: Promise<DecodedType>|StepStreamEventGenerator<DecodedType>): StepResponse<DecodedType> {
     let is_stream: boolean = true;
@@ -67,4 +68,30 @@ export function createStepResponse<DecodedType extends StepResult = StepResult>(
     };
 
     return response;
+}
+
+export function createStructuredStepResponse<Schema extends Type, DecodedType extends StepResult = StepResult>(
+    base: StepResponse<DecodedType>,
+    schema: Schema,
+): StructuredStepResponse<Schema, DecodedType> {
+    const structured: StructuredStepResponse<Schema, DecodedType> = {
+        ...base,
+
+        on<T extends StepStreamEventType>(type: T, handler: StepStreamEventHandler<T>) {
+            base.on(type, handler);
+            return structured;
+        },
+
+        async json() {
+            return JSON.parse(await base.text()) as JSONValue;
+        },
+
+        async object() {
+            const json_text = await base.text();
+            const parsed = JSON.parse(json_text);
+            return schema.assert(parsed);
+        },
+    };
+
+    return structured;
 }

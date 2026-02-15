@@ -1,6 +1,7 @@
 import type {Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType, ToolCall} from "llm-msg-io";
 import type {StepStreamEventHandler} from "./handler.ts";
-import type {AsyncChannel} from "@jiminp/tooltool";
+import type {AsyncChannel, JSONValue} from "@jiminp/tooltool";
+import type {Type} from "arktype";
 
 export interface StepResponse<DecodedType extends StepResult = StepResult> {
     /** Whether this response is being streamed. */
@@ -28,4 +29,9 @@ export interface StepResponse<DecodedType extends StepResult = StepResult> {
 
     /** Wait for the response to complete. This is identical to `result()`. */
     done(): Promise<DecodedType>;
+}
+
+export interface StructuredStepResponse<Schema extends Type, DecodedType extends StepResult = StepResult> extends StepResponse<DecodedType> {
+    json(): Promise<JSONValue>;
+    object(): Promise<Schema['infer']>;
 }

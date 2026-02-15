@@ -1,5 +1,5 @@
-import {type} from "arktype";
-import type {MessageArray} from "llm-msg-io";
+import {type Type, type} from "arktype";
+import type {MessageArray, ResponseSchema} from "llm-msg-io";
 
 import type {NestedArray, TransformFunction} from "@jiminp/tooltool";
 import {exportType} from "../../../util/type.ts";
@@ -48,11 +48,20 @@ export const SamplingParams = exportType(type({
 }));
 export type SamplingParams = typeof SamplingParams.infer;
 
+export interface ResponseType<Schema extends Type = Type> extends Exclude<ResponseSchema, 'schema'> {
+    schema: Schema;
+}
+
+export type ResponseTypeLike<Schema extends Type = Type> = Schema | ResponseType<Schema>;
+
 export type StepRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
     abort_signal?: AbortSignal;
 
     /** Messages to send. */
     messages: MessageArray;
+
+    /** Response schema. */
+    response_type?: ResponseTypeLike;
 
     /** Provider and API-specific parameters. */
     extra_params?: ExtraParams;
