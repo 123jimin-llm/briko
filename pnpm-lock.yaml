@@ -22,10 +22,10 @@ importers:
         version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.25.0(ws@8.19.0))
       openai:
-        specifier: ^6.22.0
-        version: 6.22.0(ws@8.19.0)
+        specifier: ^6.25.0
+        version: 6.25.0(ws@8.19.0)
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.1
@@ -705,8 +705,8 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90:
-    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90}
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c:
+    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c}
     version: 0.2.1
     peerDependencies:
       '@anthropic-ai/sdk': ^0.78.0
@@ -773,8 +773,8 @@ packages:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  openai@6.22.0:
-    resolution: {integrity: sha512-7Yvy17F33Bi9RutWbsaYt5hJEEJ/krRPOrwan+f9aCPuMat1WVsb2VNSII5W1EksKT6fF69TG/xj4XzodK3JZw==}
+  openai@6.25.0:
+    resolution: {integrity: sha512-mEh6VZ2ds2AGGokWARo18aPISI1OhlgdEIC1ewhkZr8pSIT31dec0ecr9Nhxx0JlybyOgoAT1sWeKtwPZzJyww==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -1678,13 +1678,13 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.25.0(ws@8.19.0)):
     dependencies:
       '@anthropic-ai/sdk': 0.78.0
       '@google/genai': 1.42.0
       arktype: 2.1.29
       json5: 2.2.3
-      openai: 6.22.0(ws@8.19.0)
+      openai: 6.25.0(ws@8.19.0)
       smol-toml: 1.6.0
 
   locate-path@6.0.0:
@@ -1761,7 +1761,7 @@ snapshots:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
 
-  openai@6.22.0(ws@8.19.0):
+  openai@6.25.0(ws@8.19.0):
     optionalDependencies:
       ws: 8.19.0
 
