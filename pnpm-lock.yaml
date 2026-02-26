@@ -12,8 +12,8 @@ importers:
         specifier: ^0.78.0
         version: 0.78.0
       '@google/genai':
-        specifier: ^1.42.0
-        version: 1.42.0
+        specifier: ^1.43.0
+        version: 1.43.0
       '@jiminp/tooltool':
         specifier: ^0.3.1
         version: 0.3.1
@@ -22,7 +22,7 @@ importers:
         version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c(@anthropic-ai/sdk@0.78.0)(@google/genai@1.43.0)(openai@6.22.0(ws@8.19.0))
       openai:
         specifier: ^6.22.0
         version: 6.22.0(ws@8.19.0)
@@ -130,8 +130,8 @@ packages:
   '@gerrit0/mini-shiki@3.22.0':
     resolution: {integrity: sha512-jMpciqEVUBKE1QwU64S4saNMzpsSza6diNCk4MWAeCxO2+LFi2FIFmL2S0VDLzEJCxuvCbU783xi8Hp/gkM5CQ==}
 
-  '@google/genai@1.42.0':
-    resolution: {integrity: sha512-+3nlMTcrQufbQ8IumGkOphxD5Pd5kKyJOzLcnY0/1IuE8upJk5aLmoexZ2BJhBp1zAjRJMEB4a2CJwKI9e2EYw==}
+  '@google/genai@1.43.0':
+    resolution: {integrity: sha512-hklCsJNdMlDM1IwcCVcGQFBg2izY0+t5BIGbRsxi2UnKi6AGKL7pqJqmBDNRbw0bYCs4y3NA7TB+fkKfP/Nrdw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.25.2
@@ -598,17 +598,13 @@ packages:
     resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
     engines: {node: 18 || 20 || >=22}
 
-  google-auth-library@10.5.0:
-    resolution: {integrity: sha512-7ABviyMOlX5hIVD60YOfHw4/CxOfBhyduaYB+wbFWCWoni4N7SLcV46hrVRktuBbZjFC9ONyqamZITN7q3n32w==}
+  google-auth-library@10.6.1:
+    resolution: {integrity: sha512-5awwuLrzNol+pFDmKJd0dKtZ0fPLAtoA5p7YO4ODsDu6ONJUVqbYwvv8y2ZBO5MBNp9TJXigB19710kYpBPdtA==}
     engines: {node: '>=18'}
 
   google-logging-utils@1.1.3:
     resolution: {integrity: sha512-eAmLkjDjAFCVXg7A1unxHsLf961m6y17QFqXqAXGj/gVkKFrEICfStRfwUlGNfeCEjNRa32JEWOUTlYXPyyKvA==}
     engines: {node: '>=14'}
-
-  gtoken@8.0.0:
-    resolution: {integrity: sha512-+CqsMbHPiSTdtSO14O51eMNlrp9N79gmeqmXeouJOhfucAedHw9noVe/n5uJk3tbKE6a+6ZCQg3RPhVhHByAIw==}
-    engines: {node: '>=18'}
 
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -705,8 +701,8 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90:
-    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90}
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c:
+    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c}
     version: 0.2.1
     peerDependencies:
       '@anthropic-ai/sdk': ^0.78.0
@@ -1084,9 +1080,9 @@ snapshots:
       '@shikijs/types': 3.22.0
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@google/genai@1.42.0':
+  '@google/genai@1.43.0':
     dependencies:
-      google-auth-library: 10.5.0
+      google-auth-library: 10.6.1
       p-retry: 4.6.2
       protobufjs: 7.5.4
       ws: 8.19.0
@@ -1573,26 +1569,18 @@ snapshots:
       minipass: 7.1.3
       path-scurry: 2.0.2
 
-  google-auth-library@10.5.0:
+  google-auth-library@10.6.1:
     dependencies:
       base64-js: 1.5.1
       ecdsa-sig-formatter: 1.0.11
       gaxios: 7.1.3
       gcp-metadata: 8.1.2
       google-logging-utils: 1.1.3
-      gtoken: 8.0.0
       jws: 4.0.1
     transitivePeerDependencies:
       - supports-color
 
   google-logging-utils@1.1.3: {}
-
-  gtoken@8.0.0:
-    dependencies:
-      gaxios: 7.1.3
-      jws: 4.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   has-flag@4.0.0: {}
 
@@ -1678,10 +1666,10 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c(@anthropic-ai/sdk@0.78.0)(@google/genai@1.43.0)(openai@6.22.0(ws@8.19.0)):
     dependencies:
       '@anthropic-ai/sdk': 0.78.0
-      '@google/genai': 1.42.0
+      '@google/genai': 1.43.0
       arktype: 2.1.29
       json5: 2.2.3
       openai: 6.22.0(ws@8.19.0)
