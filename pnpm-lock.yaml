@@ -22,7 +22,7 @@ importers:
         version: 2.1.29
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0))
       openai:
         specifier: ^6.22.0
         version: 6.22.0(ws@8.19.0)
@@ -43,8 +43,8 @@ importers:
         specifier: ^10.0.10
         version: 10.0.10
       '@types/node':
-        specifier: ^25.3.0
-        version: 25.3.0
+        specifier: ^25.3.1
+        version: 25.3.1
       chai:
         specifier: ^6.2.2
         version: 6.2.2
@@ -252,8 +252,8 @@ packages:
   '@types/mocha@10.0.10':
     resolution: {integrity: sha512-xPyYSz1cMPnJQhl0CLMH68j3gprKZaTjG3s5Vi+fDgx+uhG9NOXwbVt52eFS8ECyXhyKcjDLCBEqBExKuiZb7Q==}
 
-  '@types/node@25.3.0':
-    resolution: {integrity: sha512-4K3bqJpXpqfg2XKGK9bpDTc6xO/xoUP/RBWS7AtRMug6zZFaRekiLzjVtAoZMquxoAbzBvy5nxQ7veS5eYzf8A==}
+  '@types/node@25.3.1':
+    resolution: {integrity: sha512-hj9YIJimBCipHVfHKRMnvmHg+wfhKc0o4mTtXh9pKBjC8TLJzz0nzGmLi5UJsYAUgSvXFHgb0V2oY10DUFtImw==}
 
   '@types/retry@0.12.0':
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
@@ -705,8 +705,8 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90:
-    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90}
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c:
+    resolution: {tarball: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c}
     version: 0.2.1
     peerDependencies:
       '@anthropic-ai/sdk': ^0.78.0
@@ -1200,7 +1200,7 @@ snapshots:
 
   '@types/mocha@10.0.10': {}
 
-  '@types/node@25.3.0':
+  '@types/node@25.3.1':
     dependencies:
       undici-types: 7.18.2
 
@@ -1678,7 +1678,7 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/78149d71e9f37f4003eb09a821e745feba6c3a90(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/5f6cf3c31d9d8b089334764975c064e8aab86b7c(@anthropic-ai/sdk@0.78.0)(@google/genai@1.42.0)(openai@6.22.0(ws@8.19.0)):
     dependencies:
       '@anthropic-ai/sdk': 0.78.0
       '@google/genai': 1.42.0
@@ -1821,7 +1821,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 25.3.0
+      '@types/node': 25.3.1
       long: 5.3.2
 
   punycode.js@2.3.1: {}
