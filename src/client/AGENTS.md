@@ -1,15 +1,8 @@
 ## AGENTS.md for `src/client/`
 
-Unified LLM client module. Wraps provider SDKs behind a common `StepClient` interface using `llm-msg-io` codecs.
+All provider modules are wired through `createCodecClient` (`codec-client.ts`) which combines a `llm-msg-io` codec with a `StepAPICaller`.
 
-### Structure
-
-- `type.ts` — `LLMClient`, `LLMEndpointParams`, `LLMAPIType` definitions.
-- `codec-client.ts` — `createCodecClient`: generic factory that wires a `llm-msg-io` codec + `StepAPICaller` into an `LLMClient`. All provider modules use this.
-- `step/` — Request/response types and construction. Has own AGENTS.md.
-- `openai/` — OpenAI-compatible provider. Maps sampling/reasoning params to OpenAI API shape.
-- `gemini/` — Google Gemini provider. Maps params to `GenerateContentParameters`.
-- `claude/` — Anthropic Claude provider. Maps params including thinking/budget config.
+- `src/client/step/` — Request/response types and construction. Has own AGENTS.md.
 
 ### Adding a Provider
 

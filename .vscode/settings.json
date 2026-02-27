@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "arktype",
         "briko",
         "dotenv",
         "eslintcache",
@@ -13,6 +14,7 @@
         "pids",
         "quantizations",
         "stylelintcache",
+        "tiktoken",
         "tooltool",
         "tsgo",
         "vuepress",
