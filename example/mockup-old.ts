@@ -30,7 +30,6 @@ import type {
 } from 'briko';
 import {createContextComposer, createTemplateBlock} from 'briko';
 
-
 // ─── Template engine binding ────────────────────────────────
 // briko defines TemplateRenderer; the consumer provides the engine.
 // briko never depends on liquidjs (or any engine) itself.
@@ -42,7 +41,6 @@ const renderer: TemplateRenderer = {
         return liquid.renderFile(name, vars);
     },
 };
-
 
 // ─── Client & constraint setup ──────────────────────────────
 
@@ -58,7 +56,6 @@ const constraint: ContextWindowConstraint = {
     model: 'gpt-4o',
     max_tokens: 8192,
 };
-
 
 // ─── Consumer-side game types ───────────────────────────────
 
@@ -77,7 +74,6 @@ interface TalkSession {
     npc: NpcProfile;
     history: History;
 }
-
 
 // ═════════════════════════════════════════════════════════════
 // Workflow 1 — NPC Generation
@@ -116,7 +112,6 @@ async function generateNpc(world: World, existing_npcs: NpcProfile[]) {
     const response = await client.step(request);
     return (await response.object())!;
 }
-
 
 // ═════════════════════════════════════════════════════════════
 // Workflow 2 — Talk: NPC responds to player
@@ -172,7 +167,7 @@ async function* respondToPlayer(
     let full_text = '';
 
     for await (const event of response.events) {
-        if (event.type === 'content.delta') {
+        if(event.type === 'content.delta') {
             full_text += event.delta;
             yield event.delta;
         }
