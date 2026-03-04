@@ -83,14 +83,33 @@ function isArkTypeSchema(response_type: ResponseTypeLike): response_type is Type
 function toResponseSchema(response_type: ResponseTypeLike): ResponseSchema {
     if(isArkTypeSchema(response_type)) {
         return {
-            schema: response_type.in.toJsonSchema(),
+            schema: sealObjectNodes(response_type.in.toJsonSchema()),
             strict: true,
         };
     } else {
         return {
             strict: true,
             ...response_type,
-            schema: response_type.schema.in.toJsonSchema(),
+            schema: sealObjectNodes(response_type.schema.in.toJsonSchema()),
         };
     }
+}
+
+/**
+ * Recursively set `additionalProperties: false` on all `type: 'object'` nodes.
+ * Required by Claude and OpenAI strict mode.
+ */
+function sealObjectNodes(node: unknown): unknown {
+    if(node == null || typeof node !== 'object') return node;
+    if(Array.isArray(node)) return node.map(sealObjectNodes);
+
+    const obj = node as Record<string, unknown>;
+    const out: Record<string, unknown> = {};
+    for(const [k, v] of Object.entries(obj)) {
+        out[k] = sealObjectNodes(v);
+    }
+    if(out['type'] === 'object') {
+        out['additionalProperties'] = false;
+    }
+    return out;
 }
