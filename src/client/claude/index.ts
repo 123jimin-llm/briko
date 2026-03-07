@@ -36,8 +36,8 @@ export function createClaudeClient(params: CreateClaudeClientParams): LLMClient<
 
     return createCodecClient(ClaudeMessagesCodec, {
         createExtraParams: (req) => createClaudeMessageParams(req),
-        call: (api_req) => client.messages.create({...api_req, stream: false}),
-        callStream: (api_req) => client.messages.create({...api_req, stream: true}),
+        call: (api_req, signal) => client.messages.create({...api_req, stream: false}, {signal}),
+        callStream: (api_req, signal) => client.messages.create({...api_req, stream: true}, {signal}),
     });
 }
 

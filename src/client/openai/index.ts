@@ -37,8 +37,8 @@ export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<
 
     return createCodecClient(OpenAIChatCodec, {
         createExtraParams: (req) => createOpenAIChatCompletionParams(req),
-        call: (api_req) => client.chat.completions.create({...api_req, stream: false}),
-        callStream: (api_req) => client.chat.completions.create({...api_req, stream: true}),
+        call: (api_req, signal) => client.chat.completions.create({...api_req, stream: false}, {signal}),
+        callStream: (api_req, signal) => client.chat.completions.create({...api_req, stream: true}, {signal}),
     });
 }
 

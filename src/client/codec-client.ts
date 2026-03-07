@@ -19,10 +19,10 @@ export interface StepAPICaller<
     createExtraParams(req: StepRequest<ExtraStepParams>): Partial<APIRequestType>;
 
     /** Call the API without streaming. */
-    call(api_req: APIRequestType): Promise<APIResponseType>;
+    call(api_req: APIRequestType, signal?: AbortSignal): Promise<APIResponseType>;
 
     /** Call the API with streaming. */
-    callStream(api_req: APIRequestType): PromiseLike<APIStreamType>;
+    callStream(api_req: APIRequestType, signal?: AbortSignal): PromiseLike<APIStreamType>;
 }
 
 /** Creates an {@link LLMClient} from a codec and provider-specific API caller. */
@@ -51,12 +51,14 @@ export function createCodecClient<
             caller.createExtraParams(req),
         ) as unknown as APIRequestType;
 
+        const signal = req.abort_signal;
+
         if(stream) {
             const decoder = createStepStreamDecoder(codec);
-            return createStepResponse(decoder(caller.callStream(api_req)));
+            return createStepResponse(decoder(caller.callStream(api_req, signal)));
         } else {
             const decoder = createStepDecoder(codec);
-            return createStepResponse(caller.call(api_req).then(decoder));
+            return createStepResponse(caller.call(api_req, signal).then(decoder));
         }
     }
 
@@ -81,14 +83,33 @@ function isArkTypeSchema(response_type: ResponseTypeLike): response_type is Type
 function toResponseSchema(response_type: ResponseTypeLike): ResponseSchema {
     if(isArkTypeSchema(response_type)) {
         return {
-            schema: response_type.in.toJsonSchema(),
+            schema: sealObjectNodes(response_type.in.toJsonSchema()),
             strict: true,
         };
     } else {
         return {
             strict: true,
             ...response_type,
-            schema: response_type.schema.in.toJsonSchema(),
+            schema: sealObjectNodes(response_type.schema.in.toJsonSchema()),
         };
     }
+}
+
+/**
+ * Recursively set `additionalProperties: false` on all `type: 'object'` nodes.
+ * Required by Claude and OpenAI strict mode.
+ */
+function sealObjectNodes(node: unknown): unknown {
+    if(node == null || typeof node !== 'object') return node;
+    if(Array.isArray(node)) return node.map(sealObjectNodes);
+
+    const obj = node as Record<string, unknown>;
+    const out: Record<string, unknown> = {};
+    for(const [k, v] of Object.entries(obj)) {
+        out[k] = sealObjectNodes(v);
+    }
+    if(out['type'] === 'object') {
+        out['additionalProperties'] = false;
+    }
+    return out;
 }
