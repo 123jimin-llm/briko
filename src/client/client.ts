@@ -4,6 +4,7 @@ import {createOpenAIClient} from "./openai/index.ts";
 import {createClaudeClient} from "./claude/index.ts";
 import {createGeminiClient} from "./gemini/index.ts";
 
+/** Creates an {@link LLMClient} by dispatching on {@link LLMEndpointParams.api_type} (defaults to `'openai'`). */
 export function createLLMClient(params: LLMEndpointParams): LLMClient {
     const api_type = params.api_type ?? 'openai';
 

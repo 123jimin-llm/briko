@@ -30,6 +30,7 @@ export function createRawClaudeClient(params: CreateClaudeClientParams): Anthrop
     });
 }
 
+/** Creates an {@link LLMClient} for the Anthropic Claude API. */
 export function createClaudeClient(params: CreateClaudeClientParams): LLMClient<ClaudeExtraStepParams> {
     const client = createRawClaudeClient(params);
 

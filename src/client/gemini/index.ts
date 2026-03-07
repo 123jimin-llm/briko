@@ -35,6 +35,7 @@ export function createRawGeminiClient(params: CreateGeminiClientParams): GoogleG
     return new GoogleGenAI(google_gen_ai_options);
 }
 
+/** Creates an {@link LLMClient} for the Google Gemini API. */
 export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<GeminiExtraStepParams> {
     const client = createRawGeminiClient(params);
 

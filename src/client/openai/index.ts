@@ -32,6 +32,7 @@ export function createRawOpenAIClient(params: CreateOpenAIClientParams): OpenAI 
     });
 }
 
+/** Creates an {@link LLMClient} for OpenAI and OpenAI-compatible APIs. */
 export function createOpenAIClient(params: CreateOpenAIClientParams): LLMClient<OpenAIExtraStepParams> {
     const client = createRawOpenAIClient(params);
 
