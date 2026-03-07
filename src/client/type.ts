@@ -13,6 +13,7 @@ export const LLMEndpointParams = exportType(type({
 
     default_headers: "Record<string, string>?",
 }));
+
 export type LLMEndpointParams = typeof LLMEndpointParams.infer;
 
 export type LLMClient<ExtraStepParams extends object = object> = StepClient<ExtraStepParams>;
