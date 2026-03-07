@@ -22,11 +22,19 @@ export interface CreateGeminiClientParams extends LLMEndpointParams {
 }
 
 export function createRawGeminiClient(params: CreateGeminiClientParams): GoogleGenAI {
-    return new GoogleGenAI({
+    const google_gen_ai_options: GoogleGenAIOptions = {
         apiKey: params.api_key ?? "",
-
         ...params.extra,
-    });
+    };
+
+    if(params.default_headers) {
+        (google_gen_ai_options.httpOptions ??= {}).headers = {
+            ...params.default_headers,
+            ...google_gen_ai_options.httpOptions?.headers,
+        };
+    }
+
+    return new GoogleGenAI(google_gen_ai_options);
 }
 
 export function createGeminiClient(params: CreateGeminiClientParams): LLMClient<GeminiExtraStepParams> {

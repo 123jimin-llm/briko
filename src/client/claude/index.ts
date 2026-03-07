@@ -26,6 +26,7 @@ export function createRawClaudeClient(params: CreateClaudeClientParams): Anthrop
         baseURL: params.base_url,
         apiKey: params.api_key ?? null,
         dangerouslyAllowBrowser: true,
+        defaultHeaders: params.default_headers,
 
         ...params.extra,
     });

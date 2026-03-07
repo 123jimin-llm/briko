@@ -26,6 +26,8 @@ export function createRawOpenAIClient(params: CreateOpenAIClientParams): OpenAI 
     return new OpenAI({
         baseURL: params.base_url,
         apiKey: params.api_key,
+        defaultHeaders: params.default_headers,
+
         dangerouslyAllowBrowser: true,
 
         ...params.extra,

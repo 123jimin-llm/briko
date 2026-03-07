@@ -10,6 +10,8 @@ export const LLMEndpointParams = exportType(type({
     base_url: "string",
     api_key: "string?",
     api_type: LLMAPIType.optional(),
+
+    default_headers: "Record<string, string>?",
 }));
 export type LLMEndpointParams = typeof LLMEndpointParams.infer;
 
