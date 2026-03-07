@@ -1,6 +1,7 @@
 import {MessageArray} from "llm-msg-io";
-import type {History} from "./type.ts";
+
 import type {ContextWindowConstraint} from "../type.ts";
+import type {History} from "./type.ts";
 
 export class LinearHistory implements History {
     /** The list of messages in the history. */

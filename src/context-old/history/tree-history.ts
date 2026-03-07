@@ -1,4 +1,5 @@
 import {MessageArray} from "llm-msg-io";
+
 import type {History} from "./type.ts";
 
 /** A half-open interval. */

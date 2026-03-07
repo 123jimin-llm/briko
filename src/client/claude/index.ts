@@ -4,15 +4,13 @@
  * @module
  */
 
-import {recursiveMerge, unreachable, type Nullable} from "@jiminp/tooltool";
-
 import Anthropic, {type ClientOptions} from "@anthropic-ai/sdk";
 import type {MessageCreateParamsNonStreaming, ThinkingConfigParam} from "@anthropic-ai/sdk/resources/messages";
-
+import {type Nullable, recursiveMerge, unreachable} from "@jiminp/tooltool";
 import {ClaudeMessagesCodec} from "llm-msg-io";
 
-import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
 import {createCodecClient} from "../codec-client.ts";
+import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
 import type {LLMClient, LLMEndpointParams} from "../type.js";
 
 export type ClaudeExtraStepParams = Partial<MessageCreateParamsNonStreaming>;

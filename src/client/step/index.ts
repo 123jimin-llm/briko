@@ -2,6 +2,7 @@ export * from "./request/index.ts";
 export * from "./response/index.ts";
 
 import type {Type} from "arktype";
+
 import type {ResponseType, StepRequest} from "./request/type.ts";
 import type {StepResponse, StructuredStepResponse} from "./response/type.ts";
 

@@ -1,6 +1,7 @@
-import type {MessageArray, MessageContent} from "llm-msg-io";
-import type {TokenCounter} from "./type.ts";
 import type {Nullable, Promisable} from "@jiminp/tooltool";
+import type {MessageArray, MessageContent} from "llm-msg-io";
+
+import type {TokenCounter} from "./type.ts";
 
 export interface CreateTextBasedTokenCounterParams<ModelSlug extends string = string> {
     countTokens?: Nullable<(model: ModelSlug, text: string) => Promisable<number>>;

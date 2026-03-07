@@ -5,15 +5,13 @@
  */
 
 import {recursiveMerge, unreachable} from "@jiminp/tooltool";
-
+import {OpenAIChatCodec} from "llm-msg-io";
 import OpenAI, {type ClientOptions} from "openai";
 import type {ReasoningEffort} from "openai/resources";
 import type {ChatCompletionCreateParamsBase} from "openai/resources/chat/completions.mjs";
 
-import {OpenAIChatCodec} from "llm-msg-io";
-
-import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
 import {createCodecClient} from "../codec-client.ts";
+import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
 import type {LLMClient, LLMEndpointParams} from "../type.js";
 
 export type OpenAIExtraStepParams = Partial<ChatCompletionCreateParamsBase>;

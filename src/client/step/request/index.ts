@@ -1,8 +1,9 @@
 export * from "./type.ts";
 
-import {asMessageArray, MessageArray, type MessageArrayLike} from "llm-msg-io";
-import type {StepRequest, StepRequestParams} from "./type.ts";
 import {applyTransforms} from "@jiminp/tooltool";
+import {asMessageArray, MessageArray, type MessageArrayLike} from "llm-msg-io";
+
+import type {StepRequest, StepRequestParams} from "./type.ts";
 
 /** Creates a `StepRequest` based on messages. */
 export function createStepRequest<ExtraParams extends object = object>(

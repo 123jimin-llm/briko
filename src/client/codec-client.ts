@@ -1,12 +1,11 @@
 import {recursiveMerge} from "@jiminp/tooltool";
-
+import {Type} from "arktype";
 import type {APIStepCodecWithStream, ResponseSchema, StepParams} from "llm-msg-io";
 import {createStepDecoder, createStepEncoder, createStepStreamDecoder} from "llm-msg-io";
 
-import type {StepResponse, StepRequest, ResponseTypeLike, StructuredStepResponse} from "./step/index.ts";
+import type {ResponseTypeLike, StepRequest, StepResponse, StructuredStepResponse} from "./step/index.ts";
 import {createStepResponse, createStructuredStepResponse} from "./step/index.ts";
 import type {LLMClient} from "./type.ts";
-import {Type} from "arktype";
 
 /** Provider-specific API call interface, bridging the encoded request to raw API responses. */
 export interface StepAPICaller<

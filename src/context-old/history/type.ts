@@ -1,4 +1,5 @@
 import type {MessageArray} from "llm-msg-io";
+
 import type {Context, ContextWindowConstraint} from "../type.ts";
 
 export interface History extends Context {

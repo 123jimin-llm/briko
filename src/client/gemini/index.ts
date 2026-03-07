@@ -4,15 +4,13 @@
  * @module
  */
 
-import {recursiveMerge, unreachable} from "@jiminp/tooltool";
-
 import type {GenerateContentConfig, GenerateContentParameters, GoogleGenAIOptions, ThinkingConfig} from "@google/genai";
 import {GoogleGenAI, ThinkingLevel} from "@google/genai";
-
+import {recursiveMerge, unreachable} from "@jiminp/tooltool";
 import {GeminiGenerateContentCodec} from "llm-msg-io";
 
-import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
 import {createCodecClient} from "../codec-client.ts";
+import type {SamplingReasoningEffort, StepRequest} from "../step/index.ts";
 import type {LLMClient, LLMEndpointParams} from "../type.js";
 
 export type GeminiExtraStepParams = Partial<GenerateContentParameters>;

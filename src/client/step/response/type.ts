@@ -1,7 +1,8 @@
-import type {Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType, TokenUsage, ToolCall} from "llm-msg-io";
-import type {StepStreamEventHandler} from "./handler.ts";
 import type {AsyncChannel, JSONValue} from "@jiminp/tooltool";
 import type {Type} from "arktype";
+import type {Message, MessageArray, StepResult, StepStreamEvent, StepStreamEventType, TokenUsage, ToolCall} from "llm-msg-io";
+
+import type {StepStreamEventHandler} from "./handler.ts";
 
 export interface StepResponseCore<DecodedType extends StepResult = StepResult> {
     /** Whether this response is being streamed. */

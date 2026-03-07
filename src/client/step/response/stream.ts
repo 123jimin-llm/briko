@@ -1,12 +1,11 @@
-import {createAsyncChannel, pipeToAsyncSink, type JSONValue} from "@jiminp/tooltool";
-
-import type {StepStreamEvent, StepStreamEventType, StepStreamEventGenerator, StepResult, ToolCall} from "llm-msg-io";
+import {createAsyncChannel, type JSONValue, pipeToAsyncSink} from "@jiminp/tooltool";
+import type {Type} from "arktype";
+import type {StepResult, StepStreamEvent, StepStreamEventGenerator, StepStreamEventType, ToolCall} from "llm-msg-io";
 import {messageContentToText, stepResultPromiseToEvents} from "llm-msg-io";
 
-import type {StepResponse, StepResponseCore, StructuredStepResponse} from "./type.ts";
 import type {StepStreamEventHandler, StepStreamEventHandlersRecord} from "./handler.ts";
 import {addStepStreamEventHandler, invokeStepStreamEventHandlers} from "./handler.ts";
-import type {Type} from "arktype";
+import type {StepResponse, StepResponseCore, StructuredStepResponse} from "./type.ts";
 
 export function createStepResponseCore<DecodedType extends StepResult = StepResult>(
     event_generator: Promise<DecodedType> | StepStreamEventGenerator<DecodedType>,
