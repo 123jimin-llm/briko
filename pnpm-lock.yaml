@@ -22,10 +22,10 @@ importers:
         version: 2.2.0
       llm-msg-io:
         specifier: github:123jimin-llm/llm-msg-io
-        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/70dba2c3516109463ab220771c3737831faa13a3(@anthropic-ai/sdk@0.78.0)(@google/genai@1.44.0)(openai@6.27.0(ws@8.19.0))
+        version: https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/70dba2c3516109463ab220771c3737831faa13a3(@anthropic-ai/sdk@0.78.0)(@google/genai@1.44.0)(openai@6.32.0(ws@8.19.0))
       openai:
-        specifier: ^6.27.0
-        version: 6.27.0(ws@8.19.0)
+        specifier: ^6.32.0
+        version: 6.32.0(ws@8.19.0)
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.1
@@ -787,8 +787,8 @@ packages:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  openai@6.27.0:
-    resolution: {integrity: sha512-osTKySlrdYrLYTt0zjhY8yp0JUBmWDCN+Q+QxsV4xMQnnoVFpylgKGgxwN8sSdTNw0G4y+WUXs4eCMWpyDNWZQ==}
+  openai@6.32.0:
+    resolution: {integrity: sha512-j3k+BjydAf8yQlcOI7WUQMQTbbF5GEIMAE2iZYCOzwwB3S2pCheaWYp+XZRNAch4jWVc52PMDGRRjutao3lLCg==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -1689,7 +1689,7 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/70dba2c3516109463ab220771c3737831faa13a3(@anthropic-ai/sdk@0.78.0)(@google/genai@1.44.0)(openai@6.27.0(ws@8.19.0)):
+  llm-msg-io@https://codeload.github.com/123jimin-llm/llm-msg-io/tar.gz/70dba2c3516109463ab220771c3737831faa13a3(@anthropic-ai/sdk@0.78.0)(@google/genai@1.44.0)(openai@6.32.0(ws@8.19.0)):
     dependencies:
       arktype: 2.2.0
       json5: 2.2.3
@@ -1697,7 +1697,7 @@ snapshots:
     optionalDependencies:
       '@anthropic-ai/sdk': 0.78.0
       '@google/genai': 1.44.0
-      openai: 6.27.0(ws@8.19.0)
+      openai: 6.32.0(ws@8.19.0)
 
   locate-path@6.0.0:
     dependencies:
@@ -1773,7 +1773,7 @@ snapshots:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
 
-  openai@6.27.0(ws@8.19.0):
+  openai@6.32.0(ws@8.19.0):
     optionalDependencies:
       ws: 8.19.0
 
