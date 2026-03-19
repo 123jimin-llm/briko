@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
-    "@google/genai": "^1.44.0",
+    "@google/genai": "^1.46.0",
     "@jiminp/tooltool": "^0.3.1",
     "arktype": "^2.2.0",
     "llm-msg-io": "github:123jimin-llm/llm-msg-io",
