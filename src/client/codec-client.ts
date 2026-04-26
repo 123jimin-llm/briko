@@ -86,14 +86,14 @@ function isArkTypeSchema(response_type: ResponseTypeLike): response_type is Type
 function toResponseSchema(response_type: ResponseTypeLike): ResponseSchema {
     if(isArkTypeSchema(response_type)) {
         return {
-            schema: sealObjectNodes(response_type.in.toJsonSchema()),
+            schema: sealObjectNodes(response_type.in.toJsonSchema()) as Record<string, unknown>,
             strict: true,
         };
     } else {
         return {
             strict: true,
             ...response_type,
-            schema: sealObjectNodes(response_type.schema.in.toJsonSchema()),
+            schema: sealObjectNodes(response_type.schema.in.toJsonSchema()) as Record<string, unknown>,
         };
     }
 }

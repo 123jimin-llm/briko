@@ -48,9 +48,9 @@ export const SamplingParams = exportType(type({
 }));
 export type SamplingParams = typeof SamplingParams.infer;
 
-export interface ResponseType<Schema extends Type = Type> extends Exclude<ResponseSchema, 'schema'> {
+export type ResponseType<Schema extends Type = Type> = Exclude<ResponseSchema, 'schema'> & {
     schema: Schema;
-}
+};
 
 export type ResponseTypeLike<Schema extends Type = Type> = Schema | ResponseType<Schema>;
 
