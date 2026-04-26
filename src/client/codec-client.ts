@@ -37,8 +37,12 @@ export function createCodecClient<
     function callAPI(req: StepRequest<ExtraStepParams>, stream: boolean): StepResponse {
         const encoder = createStepEncoder(codec);
         const lib_req: StepParams = {
-            ...req,
+            messages: req.messages,
         };
+
+        if(req.tools) {
+            lib_req.functions = req.tools;
+        }
 
         if(req.response_type) {
             lib_req.response_schema = toResponseSchema(req.response_type);

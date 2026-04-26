@@ -1,6 +1,6 @@
 import type {NestedArray, TransformFunction} from "@jiminp/tooltool";
 import {type Type, type} from "arktype";
-import type {MessageArray, ResponseSchema} from "llm-msg-io";
+import type {FunctionDefinition, MessageArray, ResponseSchema} from "llm-msg-io";
 
 import {exportType} from "../../../util/type.ts";
 
@@ -56,6 +56,8 @@ export type ResponseTypeLike<Schema extends Type = Type> = Schema | ResponseType
 
 export type StepRequestParams<ExtraParams extends object = object> = Partial<ModelParams> & Partial<SamplingParams> & {
     abort_signal?: AbortSignal;
+
+    tools?: FunctionDefinition[];
 
     /** Messages to send. */
     messages: MessageArray;
