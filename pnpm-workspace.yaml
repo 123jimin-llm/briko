@@ -4,5 +4,6 @@ minimumReleaseAgeExclude:
   - "@jiminp/tooltool"
   - "llm-msg-io"
 onlyBuiltDependencies:
-  - "@jiminp/tooltool"
   - "llm-msg-io"
+allowBuilds:
+  llm-msg-io: true
