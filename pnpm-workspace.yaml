@@ -3,7 +3,5 @@ minimumReleaseAgeExclude:
   - "@jiminp/eslint-config"
   - "@jiminp/tooltool"
   - "llm-msg-io"
-onlyBuiltDependencies:
-  - "llm-msg-io"
 allowBuilds:
   llm-msg-io: true
