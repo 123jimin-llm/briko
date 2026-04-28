@@ -5,3 +5,4 @@ minimumReleaseAgeExclude:
   - "llm-msg-io"
 allowBuilds:
   llm-msg-io: true
+  protobufjs: true
