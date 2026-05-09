@@ -6,3 +6,4 @@ minimumReleaseAgeExclude:
 allowBuilds:
   llm-msg-io: true
   protobufjs: true
+  "@google/genai": true
