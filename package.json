@@ -2,20 +2,6 @@
   "name": "briko-monorepo",
   "private": true,
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./packages/briko/dist/index.d.ts",
-      "import": "./packages/briko/dist/index.js"
-    },
-    "./llm-msg-io": {
-      "types": "./packages/llm-msg-io/dist/index.d.ts",
-      "import": "./packages/llm-msg-io/dist/index.js"
-    }
-  },
-  "files": [
-    "packages/briko/dist",
-    "packages/llm-msg-io/dist"
-  ],
   "scripts": {
     "clean": "pnpm -r run clean",
     "prepare": "pnpm -r run build",
@@ -25,17 +11,10 @@
     "lint": "pnpm -r run lint",
     "test": "pnpm -r run test"
   },
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.95.2",
-    "@google/genai": "^2.2.0",
-    "@jiminp/tooltool": "^0.3.2",
-    "arktype": "^2.2.0",
-    "json5": "^2.2.3",
-    "openai": "^6.37.0",
-    "smol-toml": "^1.6.1"
-  },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.97.1",
     "@eslint/js": "^10.0.1",
+    "@google/genai": "^2.5.0",
     "@jiminp/eslint-config": "^1.3.5",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/chai": "^5.2.3",
@@ -45,6 +24,7 @@
     "eslint": "^10.4.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "mocha": "^11.7.5",
+    "openai": "^6.38.0",
     "rimraf": "^6.1.3",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
