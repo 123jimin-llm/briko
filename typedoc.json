@@ -1,9 +1,9 @@
 {
     "name": "Briko",
+    "entryPointStrategy": "packages",
+    "entryPoints": ["packages/briko", "packages/llm-msg-io"],
+    "out": "docs",
     "theme": "default",
-    "entryPoints": ["src/**/index.ts"],
-    "entryPointStrategy": "resolve",
-    "exclude": ["**/*.spec.ts"],
     "excludeReferences": true,
     "groupReferencesByType": true,
     "useFirstParagraphOfCommentAsSummary": true,

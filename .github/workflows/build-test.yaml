@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: |
           pnpm install
-          pnpm build
+          pnpm -r run build
       - name: Test
         run: |
-          pnpm test
+          pnpm -r run test

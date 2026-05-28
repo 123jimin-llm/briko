@@ -3,7 +3,8 @@ name: CI
 on:
   push:
     paths-ignore:
-     - "docs/**"
+     - "packages/llm-msg-io/docs/**"
+     - "packages/vscode-stf/**"
   workflow_dispatch:
 
 jobs:

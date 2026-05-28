@@ -1,0 +1,35 @@
+{
+  "name": "vscode-stf",
+  "displayName": "STF (Simple Text Format)",
+  "description": "Syntax highlighting for STF (Simple Text Format), a human-editable format for LLM message files.",
+  "version": "0.0.1",
+  "publisher": "jiminp",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/123jimin-llm/briko.git",
+    "directory": "packages/vscode-stf"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "stf",
+        "aliases": ["STF", "Simple Text Format"],
+        "extensions": [".stf"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "stf",
+        "scopeName": "source.stf",
+        "path": "./syntaxes/stf.tmLanguage.json"
+      }
+    ]
+  }
+}

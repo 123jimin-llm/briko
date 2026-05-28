@@ -1,0 +1,127 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "STF",
+    "scopeName": "source.stf",
+    "patterns": [
+        { "include": "#line-comment" },
+        { "include": "#block-comment" },
+        { "include": "#polyadic-command" },
+        { "include": "#role-command" },
+        { "include": "#message-command" },
+        { "include": "#end-command" },
+        { "include": "#flush-command" },
+        { "include": "#escaped-data-line" },
+        { "include": "#data-line" }
+    ],
+    "repository": {
+        "line-comment": {
+            "match": "^(;)[ \\t]*(#|//)(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.comment.stf" },
+                "2": { "name": "punctuation.definition.comment.stf" },
+                "3": { "name": "comment.line.stf" }
+            },
+            "name": "comment.line.stf"
+        },
+        "block-comment": {
+            "begin": "^(;)[ \\t*]*(/)\\*(.*)$",
+            "beginCaptures": {
+                "0": { "name": "comment.block.stf" }
+            },
+            "end": "^(;)[ \\t]*(\\*/)(.*)$",
+            "endCaptures": {
+                "0": { "name": "comment.block.stf" }
+            },
+            "name": "comment.block.stf",
+            "patterns": [
+                { "include": "#block-comment" }
+            ]
+        },
+        "command-args-kv": {
+            "match": "([a-z][a-z0-9_]*)\\s*=\\s*(?:(\"[^\"]*\"|'[^']*')|(\\S+))",
+            "captures": {
+                "1": { "name": "variable.parameter.stf" },
+                "2": { "name": "string.quoted.stf" },
+                "3": { "name": "string.unquoted.argument.stf" }
+            }
+        },
+        "command-args-json5": {
+            "begin": "(\\{)",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.object.begin.stf" }
+            },
+            "end": "(\\})",
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.object.end.stf" }
+            },
+            "name": "meta.object-literal.stf",
+            "patterns": [
+                { "include": "source.json" }
+            ]
+        },
+        "command-args": {
+            "patterns": [
+                { "include": "#command-args-kv" },
+                { "include": "#command-args-json5" }
+            ]
+        },
+        "role-command": {
+            "match": "^(;)([ \\t]*)(system|sys|developer|dev|user|assistant|ai|tool)\\b(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.command.stf" },
+                "3": { "name": "keyword.control.role.stf" },
+                "4": {
+                    "patterns": [{ "include": "#command-args" }]
+                }
+            }
+        },
+        "message-command": {
+            "match": "^(;)([ \\t]*)(message|msg)\\b(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.command.stf" },
+                "3": { "name": "keyword.control.message.stf" },
+                "4": {
+                    "patterns": [{ "include": "#command-args" }]
+                }
+            }
+        },
+        "polyadic-command": {
+            "match": "^(;)([ \\t]*)(raw|extra|meta)\\b(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.command.stf" },
+                "3": { "name": "keyword.other.polyadic.stf" },
+                "4": {
+                    "patterns": [{ "include": "#command-args" }]
+                }
+            }
+        },
+        "end-command": {
+            "match": "^(;)([ \\t]*)(end)\\b(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.command.stf" },
+                "3": { "name": "keyword.other.end.stf" },
+                "4": { "name": "comment.line.end-annotation.stf" }
+            }
+        },
+        "flush-command": {
+            "match": "^(;)([ \\t]*)(flush)\\b(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.command.stf" },
+                "3": { "name": "keyword.other.flush.stf" }
+            }
+        },
+        "escaped-data-line": {
+            "match": "^(;;)(.*)$",
+            "captures": {
+                "1": { "name": "constant.character.escape.stf" },
+                "2": { "name": "string.unquoted.data.stf" }
+            }
+        },
+        "data-line": {
+            "match": "^(?!;)(.+)$",
+            "captures": {
+                "1": { "name": "string.unquoted.data.stf" }
+            }
+        }
+    }
+}

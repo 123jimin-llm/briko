@@ -136,3 +136,6 @@ node-compile-cache/
 
 # Documentation
 /docs/
+
+# VSCode extension output
+*.vsix

@@ -1,24 +1,21 @@
-## AGENTS.md for briko
+## AGENTS.md for briko monorepo
 
-TypeScript library for building LLM agents. Normalizes provider APIs (OpenAI, Gemini, Claude) behind a unified client interface.
+pnpm workspace monorepo for LLM tooling libraries.
 
-### Architecture
+### Packages
 
-- Provider SDKs abstracted via `llm-msg-io` codecs — each provider module encodes `StepRequest` into provider-native format and decodes responses back.
-- Runtime validation uses `arktype`. Public arktype types are wrapped via `exportType()` from `src/util/type.ts`.
-
-### Stability
-
-- `src/client/` — **Stable.** Has own AGENTS.md.
-- `src/token-counter/` — **Needs real-world testing.** Has own AGENTS.md.
-- `src/context-old/` — **Deprecated.** Previous iteration of context management; kept for reference only.
-- PLANNED: Context management API (scope, design TBD — pre-planning).
+- `packages/briko/` -- LLM client library. Has own AGENTS.md.
+- `packages/llm-msg-io/` -- Message serialization. Has own AGENTS.md.
+- `packages/vscode-stf/` -- VSCode extension for STF syntax highlighting.
 
 ### Build & Test
 
-- `pnpm build` then `pnpm test` — mocha runs on compiled `dist/**/*.spec.js`. Build before testing.
-- TypeScript uses `rewriteRelativeImportExtensions` — source imports use `.ts` extensions.
+- `pnpm build` then `pnpm test` -- builds and tests all packages in topological order.
+- Build order: llm-msg-io first (no workspace deps), then briko (depends on llm-msg-io).
+- TypeScript uses `rewriteRelativeImportExtensions` -- source imports use `.ts` extensions.
 
 ### Conventions
 
 - Module doc comments use `@module` tag in barrel files.
+- ArkType types are wrapped with `exportType()` before export.
+- Shared config (tsconfig.base.json, eslint.config.js) lives at workspace root.

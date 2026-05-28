@@ -1,0 +1,58 @@
+{
+  "name": "llm-msg-io",
+  "version": "0.2.2",
+  "description": "A small library for serializing and deserializing LLM messages.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.spec.*"
+  ],
+  "scripts": {
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "lint": "eslint src/",
+    "pretest": "pnpm build",
+    "test": "mocha \"dist/**/*.spec.js\""
+  },
+  "keywords": [],
+  "author": "Jimin Park",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/123jimin-llm/briko.git",
+    "directory": "packages/llm-msg-io"
+  },
+  "bugs": {
+    "url": "https://github.com/123jimin-llm/briko/issues"
+  },
+  "homepage": "https://github.com/123jimin-llm/briko",
+  "peerDependencies": {
+    "@anthropic-ai/sdk": ">=0.95.1 <1.0.0",
+    "@google/genai": "^2.0.0",
+    "openai": "^6.37.0"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/sdk": {
+      "optional": true
+    },
+    "@google/genai": {
+      "optional": true
+    },
+    "openai": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "arktype": "^2.2.0",
+    "json5": "^2.2.3",
+    "smol-toml": "^1.6.1"
+  }
+}

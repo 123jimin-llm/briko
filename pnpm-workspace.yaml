@@ -1,9 +1,9 @@
+packages:
+  - "packages/*"
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - "@jiminp/eslint-config"
   - "@jiminp/tooltool"
-  - "llm-msg-io"
 allowBuilds:
-  llm-msg-io: true
   protobufjs: true
   "@google/genai": true

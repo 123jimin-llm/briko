@@ -4,14 +4,31 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Run Tests",
+            "name": "Test briko",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-            "preLaunchTask": "tsc: build - tsconfig.json",
+            "args": ["dist/**/*.spec.js"],
+            "cwd": "${workspaceFolder}/packages/briko",
+            "preLaunchTask": "tsc: build - packages/briko/tsconfig.json",
             "outFiles": [
-                "${workspaceFolder}/dist/**/*.js"
+                "${workspaceFolder}/packages/briko/dist/**/*.js"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test llm-msg-io",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "args": ["dist/**/*.spec.js"],
+            "cwd": "${workspaceFolder}/packages/llm-msg-io",
+            "preLaunchTask": "tsc: build - packages/llm-msg-io/tsconfig.json",
+            "outFiles": [
+                "${workspaceFolder}/packages/llm-msg-io/dist/**/*.js"
             ]
         }
     ]
