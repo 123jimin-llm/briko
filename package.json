@@ -2,8 +2,23 @@
   "name": "briko-monorepo",
   "private": true,
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./packages/briko/dist/index.d.ts",
+      "import": "./packages/briko/dist/index.js"
+    },
+    "./llm-msg-io": {
+      "types": "./packages/llm-msg-io/dist/index.d.ts",
+      "import": "./packages/llm-msg-io/dist/index.js"
+    }
+  },
+  "files": [
+    "packages/briko/dist",
+    "packages/llm-msg-io/dist"
+  ],
   "scripts": {
     "clean": "pnpm -r run clean",
+    "prepare": "pnpm -r run build",
     "build": "pnpm -r run build",
     "build:watch": "pnpm -r --parallel run build:watch",
     "build-docs": "typedoc",
