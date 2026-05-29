@@ -39,7 +39,7 @@
     "@google/genai": "^2.2.0",
     "@jiminp/tooltool": "^0.3.2",
     "arktype": "^2.2.0",
-    "llm-msg-io": "workspace:*",
+    "llm-msg-io": "file:../llm-msg-io",
     "openai": "^6.37.0"
   }
 }

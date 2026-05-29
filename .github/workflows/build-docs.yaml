@@ -2,11 +2,6 @@ name: Build and Deploy Docs
 
 on:
   workflow_call:
-    inputs:
-      pnpm-version:
-        description: "pnpm version"
-        type: string
-        default: "10.33.0"
 
 permissions:
   contents: read
@@ -27,7 +22,6 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: ${{ inputs.pnpm-version }}
           run_install: true
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
