@@ -1,10 +1,10 @@
 {
-  "name": "briko-monorepo",
+  "name": "briko",
   "version": "0.0.2",
   "private": true,
   "type": "module",
   "exports": {
-    "./briko": {
+    ".": {
       "types": "./packages/briko/dist/index.d.ts",
       "import": "./packages/briko/dist/index.js"
     },
