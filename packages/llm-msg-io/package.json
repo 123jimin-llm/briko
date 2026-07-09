@@ -51,7 +51,7 @@
     }
   },
   "dependencies": {
-    "arktype": "^2.2.0",
+    "arktype": "^2.2.3",
     "json5": "^2.2.3",
     "smol-toml": "^1.6.1"
   }
