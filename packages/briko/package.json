@@ -36,7 +36,7 @@
   "homepage": "https://github.com/123jimin-llm/briko",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.2",
-    "@google/genai": "^2.2.0",
+    "@google/genai": "^2.14.0",
     "@jiminp/tooltool": "^0.3.2",
     "arktype": "^2.2.0",
     "llm-msg-io": "workspace:*",
