@@ -40,6 +40,6 @@
     "@jiminp/tooltool": "^0.3.2",
     "arktype": "^2.2.0",
     "llm-msg-io": "workspace:*",
-    "openai": "^6.37.0"
+    "openai": "^7.4.0"
   }
 }
