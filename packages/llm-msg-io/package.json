@@ -53,6 +53,6 @@
   "dependencies": {
     "arktype": "^2.2.0",
     "json5": "^2.2.3",
-    "smol-toml": "^1.6.1"
+    "smol-toml": "^1.8.0"
   }
 }
